@@ -66,7 +66,7 @@ const GlobalStyles = createGlobalStyle`
   margin: 0;
 
   /* Creating animations for dark mode */
-  transition: background-color 0.3s, border 0.3s;
+  transition: all 0.3s, border 0.3s;
   font-family: 'Quicksand', sans-serif;
 }
 
