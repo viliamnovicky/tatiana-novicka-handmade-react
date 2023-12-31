@@ -146,6 +146,29 @@ img {
   filter: grayscale(var(--image-grayscale)) opacity(var(--image-opacity));
 }
 
+/* SCROLLBAR*/
+
+/* width */
+::-webkit-scrollbar {
+  width: 1.3rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--color-primary-50);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary-300);
+  border-radius: 1rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-500);
+}
+
 /*
 FOR DARK MODE
 
@@ -186,5 +209,6 @@ FOR DARK MODE
 --image-opacity: 90%;
 */
 `
+
 
 export default GlobalStyles

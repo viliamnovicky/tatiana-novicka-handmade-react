@@ -29,6 +29,9 @@ function Navbar() {
   return (
     <NavList>
       <li>
+        <StyledNavLink to="domov">O mne</StyledNavLink>
+      </li>
+      <li>
         <StyledNavLink to="produkty">Produkty</StyledNavLink>
       </li>
       <li>

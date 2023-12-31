@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { FaFacebookSquare } from "react-icons/fa";
 import { FaSquareInstagram } from "react-icons/fa6";
 import { FaYoutube } from "react-icons/fa6";
+import StyledParagraph from "./StyledParagraph";
+import AnchorLinkLogo from "./AnchorLinkLogo";
 
 const StyledFooter = styled.footer`
   height: 10rem;
@@ -9,6 +11,7 @@ const StyledFooter = styled.footer`
   display: flex;
   justify-content: space-between;
   padding: 0 10rem;
+  border-radius: 1rem;
 `;
 
 const FooterBox = styled.div`
@@ -22,26 +25,27 @@ function Footer() {
   return (
     <StyledFooter>
       <FooterBox>
-        <p>&copy; tatiana Novická {new Date().getFullYear()} </p>
-        <a
+        <StyledParagraph color="secondary">&copy; Tatiana Novická {new Date().getFullYear()} </StyledParagraph>
+        <AnchorLinkLogo
+
           href="https://www.facebook.com/TatiJanaN-handmade-249652415190403"
           rel="noreferrer"
           target="_blank"
         >
           <FaFacebookSquare />
-        </a>
+        </AnchorLinkLogo>
       </FooterBox>
       <FooterBox>
-        <p>Vytvoril s 🤍 Viliam Novický Visual Arts</p>
-        <a>
+        <StyledParagraph color="secondary">Vytvoril s 🤍 Viliam Novický Visual Arts</StyledParagraph>
+        <AnchorLinkLogo href='https://www.facebook.com/ViliamNovickyVisualArts' target='_blank'>
           <FaFacebookSquare />
-        </a>
-        <a>
+        </AnchorLinkLogo>
+        <AnchorLinkLogo href='https://www.instagram.com/viliamnovicky/' target='_blank'>
           <FaSquareInstagram />
-        </a>
-        <a>
+        </AnchorLinkLogo>
+        <AnchorLinkLogo href='https://www.youtube.com/channel/UCp9fNN9AzBfN6XVvNykU-_Q' target='_blank'>
           <FaYoutube />
-        </a>
+        </AnchorLinkLogo>
       </FooterBox>
     </StyledFooter>
   );

@@ -9,6 +9,10 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid var(--color-primary-50);
+  border-radius: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 `;
 
 function Header() {

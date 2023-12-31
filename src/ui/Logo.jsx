@@ -5,16 +5,16 @@ const StyledLogo = styled.div`
 `;
 
 const StyledHeader = styled.h1`
-  font-size: 6rem;
+  font-size: 5rem;
   font-family: var(--font-dancing);
 `;
 
 const StyledParagraph = styled.p`
-  font-size: 2rem;
+  font-size: 1.6rem;
   text-transform: uppercase;
-  letter-spacing: 3.3rem;
-  padding-left: 3.3rem;
-  padding-bottom: 2rem;
+  letter-spacing: 2.9rem;
+  padding-left: 2.9rem;
+  padding-bottom: 1.5rem;
 `
 
 function Logo() {
