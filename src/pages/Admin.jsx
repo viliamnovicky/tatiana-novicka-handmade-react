@@ -6,6 +6,7 @@ function Admin() {
             <Sidebar/>
             <p>wtf?</p>
             <p>wtf?</p>
+            <p>wtf?</p>
         </div>
     )
 }
