@@ -4,10 +4,6 @@ function Admin() {
     return (
         <div>
             <Sidebar/>
-            <p>wtf?</p>
-            <p>wtf?</p>
-            <p>wtf?</p>
-            <p>wtf?</p>
         </div>
     )
 }
