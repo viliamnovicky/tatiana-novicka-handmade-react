@@ -4,7 +4,7 @@ function Admin() {
     return (
         <div>
             <Sidebar/>
-
+            <p>wtf?</p>
         </div>
     )
 }
