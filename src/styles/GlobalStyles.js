@@ -38,6 +38,8 @@ const GlobalStyles = createGlobalStyle`
   --color-grey-900: #1c1917;
   --color-grey-950: #0c0a09;
 
+  --color-transparent-100: rgba(28, 25, 23, 1)
+
   --backdrop-color: rgba(255, 255, 255, 0.1);
 
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
@@ -208,7 +210,6 @@ FOR DARK MODE
 --image-grayscale: 10%;
 --image-opacity: 90%;
 */
-`
+`;
 
-
-export default GlobalStyles
+export default GlobalStyles;

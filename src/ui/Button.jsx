@@ -38,6 +38,20 @@ const variations = {
       background-color: var(--color-grey-50);
     }
   `,
+  adminSidebar: css`
+    font-weight: 100;
+  padding: 2rem 3rem;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--color-grey-300);  
+  font-size: 2rem;
+  background: none;
+  text-align: left;
+  border-radius: 0;
+
+  &:last-child {
+    border-bottom: none;
+  }
+  `,
   danger: css`
     color: var(--color-red-100);
     background-color: var(--color-red-700);
@@ -59,7 +73,6 @@ const Button = styled.button`
 
 Button.defaultProps = {
   variation: "primary",
-  size: "medium"
 }
 
 export default Button

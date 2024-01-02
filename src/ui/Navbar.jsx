@@ -35,10 +35,10 @@ function Navbar() {
         <StyledNavLink to="produkty">Produkty</StyledNavLink>
       </li>
       <li>
-        <StyledNavLink to="zakaznici">Zákazníci</StyledNavLink>
+        <StyledNavLink to="kontakt">Kontakt</StyledNavLink>
       </li>
       <li>
-        <StyledNavLink to="kontakt">Kontakt</StyledNavLink>
+        <StyledNavLink to="admin">admin</StyledNavLink>
       </li>
     </NavList>
   );

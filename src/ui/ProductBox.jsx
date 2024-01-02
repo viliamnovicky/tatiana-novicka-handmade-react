@@ -12,13 +12,20 @@ const StyledProductBox = styled.div`
 
   &:hover img {
     transform: scale(1.2);
-    filter: blur(.1rem) brightness(.8);
+    filter: blur(0.1rem) brightness(0.8);
   }
 
   &:hover h1 {
     opacity: 1;
     width: 80%;
     height: 80%;
+  }
+
+  &:hover div {
+    opacity: .7;
+    width: 80%;
+    height: 80%;
+    background: var(--color-grey-100);
   }
 `;
 
@@ -27,23 +34,34 @@ const Image = styled.img`
   filter: blur(0rem) brightness(1);
 `;
 
-const StyledHeader = styled.h1`
+const StyledHeaderDiv = styled.div`
   font-weight: 100;
   text-transform: uppercase;
   text-align: center;
-  color: var(--color-grey-900);
   letter-spacing: 0.3rem;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: var(--color-grey-200);
   width: 20%;
   height: 20%;
   border-radius: 50%;
+  opacity: 0;
+  z-index:9;
+`;
+
+const StyledHeader = styled.h1`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index:10;
+  transform: translate(-50%, -50%);
+  font-weight: 100;
+  color: var(--color-grey-900);
   display: flex;
   justify-content: center;
   align-items: center;
+  text-transform: uppercase;
   opacity: 0;
 `;
 
@@ -51,7 +69,8 @@ function ProductBox({ src, category }) {
   return (
     <StyledProductBox>
       <Image src={src} />
-      <StyledHeader>{category}</StyledHeader>
+        <StyledHeader>{category}</StyledHeader>
+      <StyledHeaderDiv/>
     </StyledProductBox>
   );
 }
