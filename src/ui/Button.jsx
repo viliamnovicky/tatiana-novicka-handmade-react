@@ -47,6 +47,15 @@ const variations = {
   background: none;
   text-align: left;
   border-radius: 0;
+  color: var(--color-grey-600);
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+
+  &:hover {
+    color: var(--color-grey-950);
+    padding-left: 4rem;
+  }
 
   &:last-child {
     border-bottom: none;
