@@ -12,11 +12,19 @@ const StyledProductBox = styled.div`
 
   &:hover img {
     transform: scale(1.2);
+    filter: blur(.1rem) brightness(.8);
+  }
+
+  &:hover h1 {
+    opacity: 1;
+    width: 80%;
+    height: 80%;
   }
 `;
 
 const Image = styled.img`
   border-radius: 2rem;
+  filter: blur(0rem) brightness(1);
 `;
 
 const StyledHeader = styled.h1`
@@ -30,12 +38,13 @@ const StyledHeader = styled.h1`
   left: 50%;
   transform: translate(-50%, -50%);
   background: var(--color-grey-200);
-  width: 80%;
-  height: 80%;
+  width: 20%;
+  height: 20%;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 0;
 `;
 
 function ProductBox({ src, category }) {
