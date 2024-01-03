@@ -7,8 +7,8 @@ function Products() {
             <ProductsContainer>
                 <ProductBox src={"/categories/ciapky.png"} category="čiapky"/>
                 <ProductBox src={"/categories/kabelky.png"} category="kabelky"/>
-                <ProductBox src={"/categories/vankuse.png"} category="šaty"/>
-                <ProductBox src={"/categories/saty.png"} category="vankúše"/>
+                <ProductBox src={"/categories/vankuse.png"} category="vankúše"/>
+                <ProductBox src={"/categories/saty.png"} category="šaty"/>
                 <ProductBox src={"/categories/obliecky.png"} category="obliečky"/>
                 <ProductBox src={"/categories/svetre.png"} category="svetre"/>
                 <ProductBox src={"/categories/obrusy.png"} category="obrusy"/>

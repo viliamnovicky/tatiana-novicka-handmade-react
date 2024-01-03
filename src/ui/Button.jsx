@@ -38,29 +38,6 @@ const variations = {
       background-color: var(--color-grey-50);
     }
   `,
-  adminSidebar: css`
-    font-weight: 100;
-  padding: 2rem 3rem;
-  text-transform: uppercase;
-  border-bottom: 1px solid var(--color-grey-300);  
-  font-size: 2rem;
-  background: none;
-  text-align: left;
-  border-radius: 0;
-  color: var(--color-grey-600);
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-
-  &:hover {
-    color: var(--color-grey-950);
-    padding-left: 4rem;
-  }
-
-  &:last-child {
-    border-bottom: none;
-  }
-  `,
   danger: css`
     color: var(--color-red-100);
     background-color: var(--color-red-700);
@@ -76,12 +53,12 @@ const Button = styled.button`
   border-radius: var(--border-radius-sm);
   box-shadow: var(--shadow-sm);
 
-  ${props=>sizes[props.size]}
-  ${props=>variations[props.variation]}
+  ${(props) => sizes[props.size]}
+  ${(props) => variations[props.variation]}
 `;
 
 Button.defaultProps = {
   variation: "primary",
-}
+};
 
-export default Button
+export default Button;
