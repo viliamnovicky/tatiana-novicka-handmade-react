@@ -1,38 +1,8 @@
 import styled from "styled-components";
-
+import { StyledForm, StyledFormCont, StyledFormInput, StyledFormLabel } from "../ui/Form";
+import Button from "../ui/Button"
+  
 function NewProduct() {
-  const StyledForm = styled.form`
-    background: var(--color-grey-100);
-    width: 100%;
-  `;
-  const StyledFormCont = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 50rem;
-    margin: auto;
-    padding: 2rem 3rem;
-  `;
-
-  const StyledFormLabel = styled.label`
-    text-transform: uppercase;
-    padding-bottom: .5rem;
-    padding-left: 1.5rem;
-  `;
-
-  const StyledFormInput = styled.input`
-    padding: 1rem 1rem;
-    border-radius: 5rem;
-    outline: none;
-    border: 1px solid var(--color-grey-100);
-    outline: 5px solid var(--color-primary-50);
-    background: var(--color-grey-200);
-    font-size: 1.8rem;
-
-    &:active, &:focus {
-        outline: 5px solid var(--color-primary-500);
-        background: var(--color-grey-50);
-    }
-  `
   return (
     <StyledForm>
       <StyledFormCont>
@@ -55,6 +25,7 @@ function NewProduct() {
         <StyledFormLabel>Dostupnosť</StyledFormLabel>
         <StyledFormInput type="text" />
       </StyledFormCont>
+      <Button>pridať</Button>
     </StyledForm>
   );
 }

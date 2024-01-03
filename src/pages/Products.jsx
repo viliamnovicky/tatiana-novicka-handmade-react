@@ -1,25 +1,29 @@
-import ProductBox from "../ui/ProductBox"
-import ProductsContainer from "../ui/ProductsContainer"
+import ProductBox from "../ui/ProductBox";
+import ProductsContainer from "../ui/ProductsContainer";
+import { getCategories } from "../services/apiCategories";
+import { useQuery } from "@tanstack/react-query";
 
 function Products() {
-    return (
-        <div>
-            <ProductsContainer>
-                <ProductBox src={"/categories/ciapky.png"} category="čiapky"/>
-                <ProductBox src={"/categories/kabelky.png"} category="kabelky"/>
-                <ProductBox src={"/categories/vankuse.png"} category="vankúše"/>
-                <ProductBox src={"/categories/saty.png"} category="šaty"/>
-                <ProductBox src={"/categories/obliecky.png"} category="obliečky"/>
-                <ProductBox src={"/categories/svetre.png"} category="svetre"/>
-                <ProductBox src={"/categories/obrusy.png"} category="obrusy"/>
-                <ProductBox src={"/categories/tasticky.png"} category="taštičky"/>
-                <ProductBox src={"/categories/ciapky.png"} category="čiapky"/>
-                <ProductBox src={"/categories/kabelky.png"} category="kabelky"/>
-                <ProductBox src={"/categories/vankuse.png"} category="vankúše"/>
-                <ProductBox src={"/categories/saty.png"} category="vankúše"/>
-            </ProductsContainer>
-        </div>
-    )
+  const {
+    isLoading,
+    data: categories,
+    error,
+  } = useQuery({
+    queryKey: ["category"],
+    queryFn: getCategories,
+  });
+
+  if (isLoading) return <p> LOADING...</p>;
+
+  return (
+    <div>
+      <ProductsContainer>
+        {categories.map((category) => (
+          <ProductBox src={category.coverImage} category={category.name} key={category.id} />
+        ))}
+      </ProductsContainer>
+    </div>
+  );
 }
 
-export default Products
+export default Products;
