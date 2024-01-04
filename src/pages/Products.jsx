@@ -2,6 +2,7 @@ import ProductBox from "../ui/ProductBox";
 import ProductsContainer from "../ui/ProductsContainer";
 import { getCategories } from "../services/apiCategories";
 import { useQuery } from "@tanstack/react-query";
+import Spinner from "../ui/Spinner";
 
 function Products() {
   const {
@@ -13,7 +14,7 @@ function Products() {
     queryFn: getCategories,
   });
 
-  if (isLoading) return <p> LOADING...</p>;
+  if (isLoading) return <Spinner/>
 
   return (
     <div>
