@@ -12,6 +12,7 @@ const StyledSidebar = styled.aside`
   display: flex;
   flex-direction: column;
   border: none;
+  padding-top: 4.5rem;
 
   span {
     font-size: 2.5rem;
@@ -62,18 +63,13 @@ function Sidebar() {
         </span>{" "}
         Pridať produkt
       </StyledNavLink>
-      <StyledNavLink to="">
+      <StyledNavLink to="sprava-produktov">
         <span>
           <GrDocumentUpdate />
         </span>{" "}
-        Aktualizovať produkt
+        Správa produktov
       </StyledNavLink>
-      <StyledNavLink to="">
-        <span>
-          <MdDeleteOutline />
-        </span>{" "}
-        Odstrániť produkt
-      </StyledNavLink>
+      
       <StyledNavLink to="">
         <span>
           <RiLockPasswordLine />

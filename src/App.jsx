@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import Admin from "./pages/Admin";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import ManageProducts from "./pages/ManageProducts";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -34,6 +35,7 @@ function App() {
             <Route path="kontakt" element={<Contact />}></Route>
             <Route path="admin" element={<Admin />}>
               <Route path="novy-produkt" element={<NewProduct />}></Route>
+              <Route path="sprava-produktov" element={<ManageProducts />}></Route>
             </Route>
           </Route>
           <Route path="*" element={<PageNotFound />} />

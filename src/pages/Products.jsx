@@ -10,11 +10,11 @@ function Products() {
     data: categories,
     error,
   } = useQuery({
-    queryKey: ["category"],
+    queryKey: ["categories"],
     queryFn: getCategories,
   });
 
-  if (isLoading) return <Spinner/>
+  if (isLoading) return <Spinner />;
 
   return (
     <div>

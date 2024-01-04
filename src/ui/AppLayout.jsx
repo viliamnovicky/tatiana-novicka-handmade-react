@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Footer from "./Footer";
 
 const Main = styled.main`
-  padding: 4rem 4.8rem 6.4rem;
+  padding: 1rem 3rem;
   overflow-x: hidden;
   background-color: var(--color-primary-50);
 `;

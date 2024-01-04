@@ -26,4 +26,4 @@ const Heading = styled.h1`
   line-height: 1.5;
 `;
 
-export default Heading;
+export default Heading
