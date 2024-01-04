@@ -1,50 +1,78 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import styled from "styled-components";
-import { getProducts } from "../services/apiProducts";
+import { deleteProduct, getProducts } from "../services/apiProducts";
 import Spinner from "./Spinner";
 import Button from "./Button";
 
-const Table = styled.table`
+const Table = styled.div`
   height: 100%;
   margin-top: 2.5rem;
 `;
 
-const TableTh = styled.th`
-  text-align: center;
-`;
-const TableTr = styled.tr``;
-
-const TableTd = styled.td`
-  text-align: center;
-  padding: 0.5rem 0;
-  font-weight: 400;
-  font-size: 1.6rem;
+const TableRow = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr 2fr;
+  align-items: center;
+  max-width: 150rem;
+  margin: auto;
 `;
 
-const TableTdName = styled.td`
+const TableColumn = styled.div`
+  text-align: center;
+  border-right: 1px solid var(--color-grey-300);
+  height: 7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const TableHead = styled.div`
+  text-align: center;
   text-transform: uppercase;
-  padding: 2rem 0;
+  padding-bottom: 1rem;
+  font-weight: 500;
+`;
+
+const TableName = styled.div`
+  text-transform: uppercase;
   font-weight: 600;
   font-size: 1.6rem;
   text-align: left;
   padding-left: 2rem;
+  height: 7rem;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid var(--color-grey-300);
 `;
 
-const TableTdPrice = styled.td`
+const TablePrice = styled.div`
   text-align: center;
-  padding: 2rem 0;
   font-weight: 600;
   font-size: 1.6rem;
+  height: 7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid var(--color-grey-300);
 `;
 
-const TableTdDiscount = styled.td`
-  background: #ceffd7;
-  border-radius: 5rem;
-  font-size: 1.6rem;
-  text-align: center;
-  width: 7rem;
-  height: 2rem;
-  border: 1rem solid var(--color-grey-100);
+const TableDiscount = styled.div`
+  height: 7rem;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid var(--color-grey-300);
+  & span {
+    display: flex;
+    background: #ceffd7;
+    border-radius: 5rem;
+    font-size: 1.6rem;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 5rem;
+    height: 5rem;
+    margin: auto;
+  }
 `;
 
 const Image = styled.img`
@@ -55,8 +83,9 @@ const Image = styled.img`
 const Buttons = styled.td`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  width: 30rem;
-  height: 100%;
+  gap: 1rem;
+  margin: auto;
+  height: 7rem;
 
   & button {
     height: 4rem;
@@ -79,34 +108,47 @@ function TableProducts() {
     queryFn: getProducts,
   });
 
+  const queryClient = useQueryClient();
+  const { isLoading: isDeleting, mutate } = useMutation({
+    mutationFn: (id) => deleteProduct(id),
+    onSuccess: () => {
+      alert("success");
+      queryClient.invalidateQueries({
+        queryKey: ["products"],
+      });
+    },
+    onError: (err) => alert(err),
+  });
+
   if (isLoading) return <Spinner />;
   return (
     <Table>
-      <TableTr>
-        <TableTh>fotka</TableTh>
-        <TableTh>meno</TableTh>
-        <TableTh>kategória</TableTh>
-        <TableTh>popis</TableTh>
-        <TableTh>cena</TableTh>
-        <TableTh>zľava</TableTh>
-        <TableTh>dostupnosť</TableTh>
-      </TableTr>
+      <TableRow>
+        <TableHead>fotka</TableHead>
+        <TableHead>meno</TableHead>
+        <TableHead>cena</TableHead>
+        <TableHead>zľava</TableHead>
+        <TableHead>dostupnosť</TableHead>
+        <TableHead></TableHead>
+      </TableRow>
       {products.map((product) => (
-        <TableTr key={product.name + product.id}>
-          <TableTd>
+        <TableRow key={product.name + product.id}>
+          <TableColumn>
             <Image src={product.coverImage} />
-          </TableTd>
-          <TableTdName key={product.name}>{product.name}</TableTdName>
-          <TableTd key={product.category}>{product.category}</TableTd>
-          <TableTd key={product.description}>{product.description}</TableTd>
-          <TableTdPrice key={product.price}>{product.price} €</TableTdPrice>
-          <TableTdDiscount key={product.discount}>{product.discount} €</TableTdDiscount>
-          <TableTd key={product.availability}>{product.availability}</TableTd>
+          </TableColumn>
+          <TableName key={product.name}>{product.name}</TableName>
+          <TablePrice key={product.price}>{product.price} €</TablePrice>
+          <TableDiscount key={product.discount}>
+            <span>{product.discount} €</span>
+          </TableDiscount>
+          <TableColumn key={product.availability}>{product.availability}</TableColumn>
           <Buttons>
             <Button>upraviť</Button>
-            <Button variation="secondary">odstrániť</Button>
+            <Button variation="secondary" onClick={() => mutate(product.id)} disabled={isDeleting}>
+              odstrániť
+            </Button>
           </Buttons>
-        </TableTr>
+        </TableRow>
       ))}
     </Table>
   );
