@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { StyledForm, StyledFormCont, StyledFormInput, StyledFormLabel } from "../ui/Form";
+import { StyledForm, StyledFormCont, StyledFormContImage, StyledFormInput, StyledFormLabel } from "../ui/Form";
 import Button from "../ui/Button";
 import HeadingAdmin from "../ui/HeadingAdmin";
 
@@ -14,25 +14,29 @@ function NewProduct() {
       <HeadingAdmin>Nový produkt</HeadingAdmin>
       <StyledForm>
         <StyledFormCont>
+          <StyledFormInput type="text" placeholder="Názov Produktu" />
           <StyledFormLabel>Názov Produktu</StyledFormLabel>
-          <StyledFormInput type="text" />
         </StyledFormCont>
         <StyledFormCont>
+          <StyledFormInput type="text" placeholder="Kategória" />
           <StyledFormLabel>Kategória</StyledFormLabel>
-          <StyledFormInput type="text" />
         </StyledFormCont>
         <StyledFormCont>
+          <StyledFormInput type="textarea" placeholder="Popis Produktu" />
           <StyledFormLabel>Popis Produktu</StyledFormLabel>
-          <StyledFormInput type="textarea" />
         </StyledFormCont>
         <StyledFormCont>
+          <StyledFormInput type="text" placeholder="Cena" />
           <StyledFormLabel>Cena</StyledFormLabel>
-          <StyledFormInput type="text" />
         </StyledFormCont>
         <StyledFormCont>
+          <StyledFormInput type="text" placeholder="Dostupnosť" />
           <StyledFormLabel>Dostupnosť</StyledFormLabel>
-          <StyledFormInput type="text" />
         </StyledFormCont>
+        <StyledFormContImage>
+          <StyledFormLabel>Fotografia</StyledFormLabel>
+          <StyledFormInput type="file" placeholder="Fotografia" />
+        </StyledFormContImage>
         <Button>pridať</Button>
       </StyledForm>
     </Container>
