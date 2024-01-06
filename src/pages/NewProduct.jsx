@@ -11,9 +11,9 @@ import FormRow, {
 import Button from "../ui/Button";
 import HeadingAdmin from "../ui/HeadingAdmin";
 
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
-import { createProduct } from "../services/apiProducts";
+import { createProduct, getProducts } from "../services/apiProducts";
 import toast from "react-hot-toast";
 
 const Container = styled.div`
@@ -28,7 +28,7 @@ function NewProduct() {
   const { errors } = formState;
   const queryClient = useQueryClient();
 
-  const { mutate, isLoading } = useMutation({
+  const { mutate, isLoading: isCreating } = useMutation({
     mutationFn: createProduct,
     onSuccess: () => {
       toast.success("Nový produkt vytvorený");
@@ -39,8 +39,8 @@ function NewProduct() {
   });
 
   function onSubmit(data) {
-    console.log(data)
-    mutate({ ...data, coverImage: data.coverImage[0], discount: 0});
+    console.log(data);
+    mutate({ ...data, coverImage: data.coverImage[0], discount: 0 });
   }
 
   function onError(errors) {
@@ -106,9 +106,14 @@ function NewProduct() {
                 required: "Toto pole je povinné",
               })}
             >
-              <option value={1}>Čiapky</option>
-              <option value={2}>Kabelky</option>
-              <option value={3}>Vankúše</option>
+              <option value={1}>čiapky</option>
+              <option value={2}>kabelky</option>
+              <option value={3}>vankúše</option>
+              <option value={4}>šaty</option>
+              <option value={5}>obliečky</option>
+              <option value={6}>svetre</option>
+              <option value={7}>obrusy</option>
+              <option value={8}>taštičky</option>
             </StyledFormSelect>
           </FormRow>
 
@@ -127,7 +132,7 @@ function NewProduct() {
               })}
             />
           </StyledFormContImage>
-          <Button disabled={isLoading}>pridať</Button>
+          <Button disabled={isCreating}>pridať</Button>
         </FormGroup>
       </StyledForm>
     </Container>

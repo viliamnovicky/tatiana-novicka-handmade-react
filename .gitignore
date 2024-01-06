@@ -25,3 +25,6 @@ dist-ssr
 
 # Another
 supabase-password.txt
+
+# Local Netlify folder
+.netlify

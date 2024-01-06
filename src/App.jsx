@@ -56,7 +56,8 @@ function App() {
               maxWidth: "500px",
               padding: "16px 24px",
               backgroundColor: "var(--color-grey-50)",
-              color: "var(--color-primary-500)",
+              color: "var(--color-grey-900)",
+              fontWeight: "500"
             },
           })
         }
