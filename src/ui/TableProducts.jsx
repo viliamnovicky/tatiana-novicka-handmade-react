@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { deleteProduct, getProducts } from "../services/apiProducts";
 import Spinner from "./Spinner";
 import Button from "./Button";
+import HeadingAdmin from "./HeadingAdmin";
 
 const Table = styled.div`
   height: 100%;
@@ -123,6 +124,7 @@ function TableProducts() {
   if (isLoading) return <Spinner />;
   return (
     <Table>
+      <HeadingAdmin>Správa produktov</HeadingAdmin>
       <TableRow>
         <TableHead>fotka</TableHead>
         <TableHead>meno</TableHead>

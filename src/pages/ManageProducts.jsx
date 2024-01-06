@@ -14,7 +14,6 @@ function ManageProducts() {
   
   return (
     <Container>
-      <HeadingAdmin>Správa produktov</HeadingAdmin>
       <TableProducts/>
     </Container>
   );
