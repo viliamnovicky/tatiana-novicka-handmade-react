@@ -1,12 +1,19 @@
 import styled, { css } from "styled-components";
 
+export const FormError = styled.p`
+  display: inline;
+  color: var(--color-secondary-400);
+  position: absolute;
+  right: 1rem;
+`;
+
 export const StyledForm = styled.form`
   background: var(--color-grey-100);
-  width: 100%;
+  width: 100rem;
   position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   margin: auto;
+  justify-content: space-between;
 
   button {
     position: absolute !important;
@@ -14,15 +21,17 @@ export const StyledForm = styled.form`
   }
 `;
 
-export const FormGroup = styled.div``
+export const FormGroup = styled.div`
+  width: 100%;
+`;
 
 export const StyledFormCont = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50rem;
   margin: auto;
   padding: 2rem 3rem;
   height: 11rem;
+  width: 100%;
 
   ${(props) =>
     props.type === "text" &&
@@ -35,9 +44,9 @@ export const StyledFormContImage = styled.div`
   display: flex;
   height: 15rem;
   flex-direction: column;
-  width: 50rem;
   margin: auto;
   padding: 2rem 3rem;
+  width: 100%;
 `;
 
 export const StyledFormLabel = styled.label`
@@ -45,6 +54,7 @@ export const StyledFormLabel = styled.label`
   padding-left: 1.5rem;
   font-size: 2rem;
   font-weight: 500;
+  position: relative;
 `;
 
 export const StyledFormSelect = styled.select`
@@ -75,6 +85,8 @@ export const StyledFormInput = styled.input`
   outline: 5px solid var(--color-primary-50);
   background: var(--color-grey-200);
   font-size: 1.8rem;
+  width: 100%;
+  width: 100%;
 
   &::placeholder {
     transition: opacity, 0.5s;
@@ -122,3 +134,29 @@ export const StyledFormInput = styled.input`
     background: var(--color-grey-50);
   }
 `;
+
+function FormRow({ label, error, children, type }) {
+  return (
+    <StyledFormCont type={type}>
+      {type != "option" ? (
+        <>
+          {children}
+          <StyledFormLabel htmlFor={children.props.id}>
+            {label}
+            {error && <FormError>{error}</FormError>}
+          </StyledFormLabel>
+        </>
+      ) : (
+        <>
+          <StyledFormLabel htmlFor={children.props.id}>
+            {label}
+            {error && <FormError>{error}</FormError>}
+          </StyledFormLabel>
+          {children}
+        </>
+      )}
+    </StyledFormCont>
+  );
+}
+
+export default FormRow;

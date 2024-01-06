@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const StyledAdminCont = styled.div`
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1fr 5fr;
 `;
 
 function Admin() {

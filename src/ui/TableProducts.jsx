@@ -4,6 +4,7 @@ import { deleteProduct, getProducts } from "../services/apiProducts";
 import Spinner from "./Spinner";
 import Button from "./Button";
 import HeadingAdmin from "./HeadingAdmin";
+import toast from "react-hot-toast";
 
 const Table = styled.div`
   height: 100%;
@@ -103,7 +104,6 @@ function TableProducts() {
   const {
     isLoading,
     data: products,
-    error,
   } = useQuery({
     queryKey: ["products"],
     queryFn: getProducts,
@@ -113,12 +113,12 @@ function TableProducts() {
   const { isLoading: isDeleting, mutate } = useMutation({
     mutationFn: (id) => deleteProduct(id),
     onSuccess: () => {
-      alert("success");
+      toast.success("Produkt úspešne vymazaný");
       queryClient.invalidateQueries({
         queryKey: ["products"],
       });
     },
-    onError: (err) => alert(err),
+    onError: (err) => toast.error(err),
   });
 
   if (isLoading) return <Spinner />;

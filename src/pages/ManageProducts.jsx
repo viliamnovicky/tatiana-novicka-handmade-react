@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import HeadingAdmin from "../ui/HeadingAdmin";
 import TableProducts from "../ui/TableProducts";
 
 

@@ -1,8 +1,8 @@
-import styled, { css } from "styled-components";
-import {
+import styled from "styled-components";
+import FormRow, {
+  FormError,
   FormGroup,
   StyledForm,
-  StyledFormCont,
   StyledFormContImage,
   StyledFormInput,
   StyledFormLabel,
@@ -11,56 +11,123 @@ import {
 import Button from "../ui/Button";
 import HeadingAdmin from "../ui/HeadingAdmin";
 
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useForm } from "react-hook-form";
+import { createProduct } from "../services/apiProducts";
+import toast from "react-hot-toast";
+
 const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   margin: auto;
-
-  ${(props) =>
-    props.type === "form-new-product" &&
-    css`
-      width: 60%;
-    `}
-
+  width: 100%;
 `;
 
 function NewProduct() {
+  const { register, handleSubmit, reset, formState } = useForm();
+  const { errors } = formState;
+  const queryClient = useQueryClient();
+
+  const { mutate, isLoading } = useMutation({
+    mutationFn: createProduct,
+    onSuccess: () => {
+      toast.success("Nový produkt vytvorený");
+      queryClient.invalidateQueries({ queryKey: ["products"] });
+      reset();
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  function onSubmit(data) {
+    console.log(data)
+    mutate({ ...data, coverImage: data.coverImage[0], discount: 0});
+  }
+
+  function onError(errors) {
+    console.log(errors);
+  }
+
   return (
-    <Container type="form-new-product">
+    <Container>
       <HeadingAdmin>Nový produkt</HeadingAdmin>
-      <StyledForm>
+      <StyledForm onSubmit={handleSubmit(onSubmit, onError)}>
         <FormGroup>
-          <StyledFormCont>
-            <StyledFormInput type="text" placeholder="Názov Produktu" />
-            <StyledFormLabel>Názov Produktu</StyledFormLabel>
-          </StyledFormCont>
-          <StyledFormCont>
-            <StyledFormInput type="text" placeholder="Cena" />
-            <StyledFormLabel>Cena</StyledFormLabel>
-          </StyledFormCont>
-          <StyledFormCont>
-            <StyledFormInput type="text" placeholder="Dostupnosť" />
-            <StyledFormLabel>Dostupnosť</StyledFormLabel>
-          </StyledFormCont>
+          <FormRow label="Názov produktu" error={errors?.name?.message}>
+            <StyledFormInput
+              autoComplete="new-password"
+              id="name"
+              placeholder="Názov Produktu"
+              {...register("name", {
+                required: "Toto pole je povinné",
+              })}
+            />
+          </FormRow>
+          <FormRow label="Cena" error={errors?.price?.message}>
+            <StyledFormInput
+              autoComplete="new-password"
+              id="price"
+              placeholder="Cena"
+              type="number"
+              {...register("price", {
+                required: "Toto pole je povinné",
+              })}
+            />
+          </FormRow>
+          <FormRow label="Dostupnosť" error={errors?.price?.message}>
+            <StyledFormInput
+              autoComplete="new-password"
+              id="availability"
+              placeholder="Dostupnosť"
+              {...register("availability", {
+                required: "Toto pole je povinné",
+              })}
+            />
+          </FormRow>
         </FormGroup>
         <FormGroup>
-          <StyledFormCont type="text">
-            <StyledFormInput as="textarea" rows="10" cols="50" placeholder="Popis Produktu" />
-            <StyledFormLabel>Popis Produktu</StyledFormLabel>
-          </StyledFormCont>
-          <StyledFormCont>
-            <StyledFormLabel for="category">Kategória</StyledFormLabel>
-            <StyledFormSelect id="category">
+          <FormRow type="text" label="Popis produktu" error={errors?.price?.message}>
+            <StyledFormInput
+              rows="10"
+              cols="15"
+              as="textarea"
+              autoComplete="new-password"
+              id="description"
+              placeholder="Popis produktu"
+              {...register("description", {
+                required: "Toto pole je povinné",
+              })}
+            />
+          </FormRow>
+          <FormRow label="Kategória" error={errors?.price?.message} type="option">
+            <StyledFormSelect
+              id="category"
+              placeholder="Kategória"
+              {...register("category", {
+                required: "Toto pole je povinné",
+              })}
+            >
               <option value={1}>Čiapky</option>
               <option value={2}>Kabelky</option>
               <option value={3}>Vankúše</option>
             </StyledFormSelect>
-          </StyledFormCont>
+          </FormRow>
+
           <StyledFormContImage>
-            <StyledFormLabel>Fotografia</StyledFormLabel>
-            <StyledFormInput type="file" placeholder="Fotografia" />
+            <StyledFormLabel for="coverImage">
+              Fotografia{" "}
+              {errors?.coverImage?.message && <FormError>{errors.coverImage.message}</FormError>}
+            </StyledFormLabel>
+            <StyledFormInput
+              id="coverImage"
+              type="file"
+              accept="image/*"
+              placeholder="Fotografia"
+              {...register("coverImage", {
+                required: "Toto pole je povinné",
+              })}
+            />
           </StyledFormContImage>
-          <Button>pridať</Button>
+          <Button disabled={isLoading}>pridať</Button>
         </FormGroup>
       </StyledForm>
     </Container>
