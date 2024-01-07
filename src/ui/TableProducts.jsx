@@ -7,8 +7,10 @@ import HeadingAdmin from "./HeadingAdmin";
 import toast from "react-hot-toast";
 
 const Table = styled.div`
-  height: 100%;
-  margin-top: 2.5rem;
+  margin-top: 1rem;
+  height: 50vh;
+  overflow: scroll;
+  padding-left: 1.5rem;
 `;
 
 const TableRow = styled.div`
@@ -123,7 +125,7 @@ function TableProducts() {
 
   if (isLoading) return <Spinner />;
   return (
-    <Table>
+    <>
       <HeadingAdmin>Správa produktov</HeadingAdmin>
       <TableRow>
         <TableHead>fotka</TableHead>
@@ -133,6 +135,7 @@ function TableProducts() {
         <TableHead>dostupnosť</TableHead>
         <TableHead></TableHead>
       </TableRow>
+    <Table>
       {products.map((product) => (
         <TableRow key={product.name + product.id}>
           <TableColumn>
@@ -153,6 +156,7 @@ function TableProducts() {
         </TableRow>
       ))}
     </Table>
+    </>
   );
 }
 

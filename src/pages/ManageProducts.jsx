@@ -1,20 +1,19 @@
 import styled from "styled-components";
 import TableProducts from "../ui/TableProducts";
+import ManageButtons from "../ui/ManageButtons";
 
-
-const Container = styled.div`
-  display: grid;
-  grid-template-columns: 1fr auto;
-`;
-
-
+const StyledManageProducts = styled.div`
+  position:relative;
+  overflow: hidden;
+  height: 72vh;
+`
 
 function ManageProducts() {
-  
   return (
-    <Container>
-      <TableProducts/>
-    </Container>
+    <StyledManageProducts>
+      <TableProducts />
+      <ManageButtons />
+    </StyledManageProducts>
   );
 }
 

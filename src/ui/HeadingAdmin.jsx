@@ -5,7 +5,7 @@ const HeadingAdmin = styled.h1`
   margin: auto;
   grid-column: -1/1;
   text-align: center;
-  padding: 2rem 0 5rem 0;
+  padding: 2rem 0 2rem 0;
 `;
 
 export default HeadingAdmin
