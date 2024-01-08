@@ -1,10 +1,10 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import styled from "styled-components";
-import { deleteProduct, getProducts } from "../services/apiProducts";
 import Spinner from "./Spinner";
 import Button from "./Button";
 import HeadingAdmin from "./HeadingAdmin";
-import toast from "react-hot-toast";
+
+import { useProducts } from "../features/products/useProducts";
+import { useDeleteProduct } from "../features/products/useDeleteProduct";
 
 const Table = styled.div`
   margin-top: 1rem;
@@ -103,25 +103,8 @@ const Buttons = styled.td`
 `;
 
 function TableProducts() {
-  const {
-    isLoading,
-    data: products,
-  } = useQuery({
-    queryKey: ["products"],
-    queryFn: getProducts,
-  });
-
-  const queryClient = useQueryClient();
-  const { isLoading: isDeleting, mutate } = useMutation({
-    mutationFn: (id) => deleteProduct(id),
-    onSuccess: () => {
-      toast.success("Produkt úspešne vymazaný");
-      queryClient.invalidateQueries({
-        queryKey: ["products"],
-      });
-    },
-    onError: (err) => toast.error(err),
-  });
+  const {isLoading, products} = useProducts()
+  const {isDeleting, deleteProduct} = useDeleteProduct()
 
   if (isLoading) return <Spinner />;
   return (
@@ -149,7 +132,7 @@ function TableProducts() {
           <TableColumn key={product.availability}>{product.availability}</TableColumn>
           <Buttons>
             <Button>upraviť</Button>
-            <Button variation="secondary" onClick={() => mutate(product.id)} disabled={isDeleting}>
+            <Button variation="secondary" onClick={() => deleteProduct(product.id)} disabled={isDeleting}>
               odstrániť
             </Button>
           </Buttons>
