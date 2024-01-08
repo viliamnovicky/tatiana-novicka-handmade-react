@@ -4,8 +4,7 @@ export async function getProducts() {
   const { data, error } = await supabase.from("products").select("*");
 
   if (error) {
-    console.error(error);
-    throw new Error("Not found");
+    throw new Error("Nepodarilo sa načítať produkty");
   }
 
   return data;
@@ -16,18 +15,31 @@ export async function deleteProduct(id) {
 
   if (error) {
     console.error(error);
-    throw new Error("Not found");
+    throw new Error("Niečo sa nepodarilo");
   }
 }
 
-export async function createProduct(newProduct) {
+export async function createEditProduct(newProduct, id) {
+  const hasImagePath = newProduct.image?.startsWith?.(supabaseUrl);
   const imageName = `${Math.random()}-${newProduct.coverImage.name}`.replaceAll("/", "");
-  const imagePath = `${supabaseUrl}/storage/v1/object/public/products/${imageName}`;
-  // Create Product
-  const { data, error } = await supabase
-    .from("products")
-    .insert([{ ...newProduct, coverImage: imagePath }])
-    .select();
+  const imagePath = hasImagePath
+    ? newProduct.coverImage
+    : `${supabaseUrl}/storage/v1/object/public/products/${imageName}`;
+
+  // Create or Edit Product
+  let query = supabase.from("products");
+
+  //Create
+  if (!id) {
+    query = query.insert([{ ...newProduct, coverImage: imagePath }]);
+  }
+
+  //Edit
+  if (id) {
+    query = query.update({ ...newProduct, image: imagePath }).eq("id", id);
+  }
+  const { data, error } = await query.select().single();
+
   if (error) {
     throw new Error("Produkt sa nepodarilo vytvoriť");
   }

@@ -1,18 +1,15 @@
 import ProductBox from "../ui/ProductBox";
 import ProductsContainer from "../ui/ProductsContainer";
-import { getCategories } from "../services/apiCategories";
-import { useQuery } from "@tanstack/react-query";
 import Spinner from "../ui/Spinner";
+import { useCategories } from "../features/categories/useCategories";
 
 function Products() {
   const {
     isLoading,
-    data: categories,
-    error,
-  } = useQuery({
-    queryKey: ["categories"],
-    queryFn: getCategories,
-  });
+    categories
+  } = useCategories()
+
+  console.log(categories)
 
   if (isLoading) return <Spinner />;
 

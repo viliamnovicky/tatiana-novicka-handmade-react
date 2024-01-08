@@ -11,10 +11,9 @@ import FormRow, {
 import Button from "../ui/Button";
 import HeadingAdmin from "../ui/HeadingAdmin";
 
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
-import { createProduct, getProducts } from "../services/apiProducts";
-import toast from "react-hot-toast";
+import { useCategories } from "../features/categories/useCategories";
+import { useCreateProduct } from "../features/products/useCreateProduct";
 
 const Container = styled.div`
   display: grid;
@@ -26,21 +25,12 @@ const Container = styled.div`
 function NewProduct() {
   const { register, handleSubmit, reset, formState } = useForm();
   const { errors } = formState;
-  const queryClient = useQueryClient();
 
-  const { mutate, isLoading: isCreating } = useMutation({
-    mutationFn: createProduct,
-    onSuccess: () => {
-      toast.success("Nový produkt vytvorený");
-      queryClient.invalidateQueries({ queryKey: ["products"] });
-      reset();
-    },
-    onError: (err) => toast.error(err.message),
-  });
+  const { categories } = useCategories();
+  const {isCreating, createProduct} = useCreateProduct()
 
   function onSubmit(data) {
-    console.log(data);
-    mutate({ ...data, coverImage: data.coverImage[0], discount: 0 });
+    createProduct({ ...data, coverImage: data.coverImage[0], discount: 0 }, {onSuccess: (data) => reset()} );
   }
 
   function onError(errors) {
@@ -106,14 +96,11 @@ function NewProduct() {
                 required: "Toto pole je povinné",
               })}
             >
-              <option value={1}>čiapky</option>
-              <option value={2}>kabelky</option>
-              <option value={3}>vankúše</option>
-              <option value={4}>šaty</option>
-              <option value={5}>obliečky</option>
-              <option value={6}>svetre</option>
-              <option value={7}>obrusy</option>
-              <option value={8}>taštičky</option>
+              {categories.map((category) => (
+                <option value={category.id} key={category.id}>
+                  {category.name}
+                </option>
+              ))}
             </StyledFormSelect>
           </FormRow>
 

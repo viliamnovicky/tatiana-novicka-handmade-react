@@ -5,6 +5,7 @@ import HeadingAdmin from "./HeadingAdmin";
 
 import { useProducts } from "../features/products/useProducts";
 import { useDeleteProduct } from "../features/products/useDeleteProduct";
+import { useCategories } from "../features/categories/useCategories";
 
 const Table = styled.div`
   margin-top: 1rem;
@@ -103,8 +104,9 @@ const Buttons = styled.td`
 `;
 
 function TableProducts() {
-  const {isLoading, products} = useProducts()
-  const {isDeleting, deleteProduct} = useDeleteProduct()
+  const { isLoading, products } = useProducts();
+  const { isDeleting, deleteProduct } = useDeleteProduct();
+  const { isLoading: isLoadingCategories, categories } = useCategories();
 
   if (isLoading) return <Spinner />;
   return (
@@ -118,27 +120,31 @@ function TableProducts() {
         <TableHead>dostupnosť</TableHead>
         <TableHead></TableHead>
       </TableRow>
-    <Table>
-      {products.map((product) => (
-        <TableRow key={product.name + product.id}>
-          <TableColumn>
-            <Image src={product.coverImage} />
-          </TableColumn>
-          <TableName key={product.name}>{product.name}</TableName>
-          <TablePrice key={product.price}>{product.price} €</TablePrice>
-          <TableDiscount key={product.discount}>
-            <span>{product.discount} €</span>
-          </TableDiscount>
-          <TableColumn key={product.availability}>{product.availability}</TableColumn>
-          <Buttons>
-            <Button>upraviť</Button>
-            <Button variation="secondary" onClick={() => deleteProduct(product.id)} disabled={isDeleting}>
-              odstrániť
-            </Button>
-          </Buttons>
-        </TableRow>
-      ))}
-    </Table>
+      <Table>
+        {products.map((product) => (
+          <TableRow key={product.name + product.id}>
+            <TableColumn>
+              <Image src={product.coverImage} />
+            </TableColumn>
+            <TableName key={product.name}>{product.name}</TableName>
+            <TablePrice key={product.price}>{product.price} €</TablePrice>
+            <TableDiscount key={product.discount}>
+              <span>{product.discount} €</span>
+            </TableDiscount>
+            <TableColumn key={product.availability}>{product.availability}</TableColumn>
+            <Buttons>
+              <Button>upraviť</Button>
+              <Button
+                variation="secondary"
+                onClick={() => deleteProduct(product.id)}
+                disabled={isDeleting}
+              >
+                odstrániť
+              </Button>
+            </Buttons>
+          </TableRow>
+        ))}
+      </Table>
     </>
   );
 }
