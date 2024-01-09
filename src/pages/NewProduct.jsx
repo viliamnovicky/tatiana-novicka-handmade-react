@@ -14,6 +14,7 @@ import HeadingAdmin from "../ui/HeadingAdmin";
 import { useForm } from "react-hook-form";
 import { useCategories } from "../features/categories/useCategories";
 import { useCreateProduct } from "../features/products/useCreateProduct";
+import Spinner from "../ui/Spinner";
 
 const Container = styled.div`
   display: grid;
@@ -26,7 +27,7 @@ function NewProduct() {
   const { register, handleSubmit, reset, formState } = useForm();
   const { errors } = formState;
 
-  const { categories } = useCategories();
+  const { categories, isLoading: isLoadingCategories } = useCategories();
   const {isCreating, createProduct} = useCreateProduct()
 
   function onSubmit(data) {
@@ -36,6 +37,8 @@ function NewProduct() {
   function onError(errors) {
     console.log(errors);
   }
+
+  if (isLoadingCategories) return <Spinner/>
 
   return (
     <Container>

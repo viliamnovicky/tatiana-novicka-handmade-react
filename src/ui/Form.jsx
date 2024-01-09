@@ -98,11 +98,16 @@ export const StyledFormInput = styled.input`
     visibility: hidden;
   }
 
-  &:focus + label {
+  &:focus + label,
+  &:not(:placeholder-shown) + label {
     opacity: 1;
     visibility: visible;
-    margin-top: 0.5rem;
+    margin-top: 0.2rem;
     color: var(--color-primary-700);
+  }
+
+  &:not(:placeholder-shown) + label {
+    color: var(--color-grey-700);
   }
 
   &:focus::placeholder {
