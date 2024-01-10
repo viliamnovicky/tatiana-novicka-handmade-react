@@ -12,6 +12,7 @@ const StyledFooter = styled.footer`
   justify-content: space-between;
   padding: 0 10rem;
   border-radius: 1rem;
+  z-index: 10;
 `;
 
 const FooterBox = styled.div`
