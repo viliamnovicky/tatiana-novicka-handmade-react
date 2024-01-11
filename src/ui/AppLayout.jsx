@@ -7,7 +7,7 @@ const Main = styled.main`
   padding: 1rem 3rem;
   overflow-x: hidden;
   background-color: var(--color-primary-50);
-  position: relative
+  position: relative;
 `;
 
 const StyledAppLayout = styled.div`

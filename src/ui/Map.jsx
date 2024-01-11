@@ -1,6 +1,7 @@
 import mapboxgl from "mapbox-gl";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import styled from "styled-components";
+import Spinner from "./Spinner"
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoidmlsaWFtbm92aWNreSIsImEiOiJjbGlpbTR6Z2QxYW12M2RtcjdzMGJwb2E2In0.tKD2A2kNH4Q8IwbpEQoXEw";
@@ -41,8 +42,9 @@ function Map() {
     });
 });
 
-  console.log(map)
-  return <MapContainer ref={mapContainer} className="map-container" />;
+  return (
+  <MapContainer ref={mapContainer} className="map-container" />
+  );
 }
 
 export default Map;
