@@ -1,15 +1,18 @@
+import { useState } from "react";
 import styled from "styled-components";
+import NewProduct from "../pages/NewProduct";
 
 const StyledModal = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: var(--color-grey-0);
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-lg);
+  background-color: var(--color-grey-100);
+  border-radius: 2rem;
   padding: 3.2rem 4rem;
   transition: all 0.5s;
+  width: 80vw;
+  height: 80vh;
 `;
 
 const Overlay = styled.div`
@@ -27,16 +30,19 @@ const Overlay = styled.div`
 const Button = styled.button`
   background: none;
   border: none;
-  padding: 0.4rem;
-  border-radius: var(--border-radius-sm);
-  transform: translateX(0.8rem);
-  transition: all 0.2s;
+  height: 4rem;
+  width: 4rem;
   position: absolute;
   top: 1.2rem;
-  right: 1.9rem;
+  right: 1.2rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-grey-800);
 
   &:hover {
-    background-color: var(--color-grey-100);
+    background: var(--color-grey-200);
   }
 
   & svg {
@@ -48,3 +54,21 @@ const Button = styled.button`
     color: var(--color-grey-500);
   }
 `;
+
+function Modal() {
+  const [openName, setOpenName] = useState("");
+
+  const close = () => setOpenName("");
+  const open = setOpenName;
+
+  return (
+    <Overlay>
+      <StyledModal>
+        <Button>✖</Button>
+        <NewProduct/>
+      </StyledModal>
+    </Overlay>
+  );
+}
+
+export default Modal;
