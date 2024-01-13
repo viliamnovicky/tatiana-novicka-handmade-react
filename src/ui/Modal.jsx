@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { cloneElement, createContext, useContext, useState } from "react";
 import styled from "styled-components";
-import NewProduct from "../pages/NewProduct";
+import NewProduct from "../features/products/NewProduct";
+import { createPortal } from "react-dom";
 
 const StyledModal = styled.div`
   position: fixed;
@@ -55,20 +56,62 @@ const Button = styled.button`
   }
 `;
 
-function Modal() {
+// function Modal() {
+//   const [openName, setOpenName] = useState("");
+
+//   const close = () => setOpenName("");
+//   const open = setOpenName;
+
+//   return (
+//     <Overlay>
+//       <StyledModal>
+//         <Button>✖</Button>
+//         <NewProduct/>
+//       </StyledModal>
+//     </Overlay>
+//   );
+// }
+
+// export default Modal;
+
+// 1. New Context
+const ModalContext = createContext();
+
+// 2. Parent Component
+function Modal({ children }) {
   const [openName, setOpenName] = useState("");
 
   const close = () => setOpenName("");
   const open = setOpenName;
 
   return (
-    <Overlay>
-      <StyledModal>
-        <Button>✖</Button>
-        <NewProduct/>
-      </StyledModal>
-    </Overlay>
+    <ModalContext.Provider value={{ openName, close, open }}>{children}</ModalContext.Provider>
   );
 }
+
+function Open({ children, opens }) {
+  const { open } = useContext(ModalContext);
+
+  return cloneElement(children, { onClick: () => open(opens) });
+}
+
+// 3. Children Components
+function Window({ children, name }) {
+  const { openName, close } = useContext(ModalContext);
+  if (name !== openName) return null;
+
+  return createPortal(
+    <Overlay>
+      <StyledModal>
+        <Button onClick={close}>✖</Button>
+        {cloneElement(children, { onCloseModal: close })}
+      </StyledModal>
+    </Overlay>,
+    document.body
+  );
+}
+
+Modal.Open = Open;
+Modal.Window = Window;
 
 export default Modal;

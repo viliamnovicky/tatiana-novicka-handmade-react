@@ -1,18 +1,21 @@
 import styled from "styled-components";
 import TableProducts from "../ui/TableProducts";
-import ManageButtons from "../ui/ManageButtons";
+import Buttons from "../ui/Buttons";
+import NewProduct from "../features/products/NewProduct";
 
 const StyledManageProducts = styled.div`
-  position:relative;
+  position: relative;
   overflow: hidden;
   height: 72vh;
-`
+`;
 
 function ManageProducts() {
   return (
     <StyledManageProducts>
       <TableProducts />
-      <ManageButtons />
+      <Buttons>
+        <NewProduct />
+      </Buttons>
     </StyledManageProducts>
   );
 }

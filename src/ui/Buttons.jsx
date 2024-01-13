@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Button from "./Button";
 
-const StyledManageButtons = styled.div`
+const StyledButtons = styled.div`
   margin: auto;
   display: flex;
   align-items: center;
@@ -13,13 +13,12 @@ const StyledManageButtons = styled.div`
   gap: 2rem;
 `;
 
-function ManageButtons() {
+function Buttons({children}) {
   return (
-    <StyledManageButtons>
-      <Button>Pridať Produkt</Button>
-      <Button>Pridať Kategóriu</Button>
-    </StyledManageButtons>
+    <StyledButtons>
+      {children}
+    </StyledButtons>
   );
 }
 
-export default ManageButtons;
+export default Buttons;

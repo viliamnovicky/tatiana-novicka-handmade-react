@@ -6,7 +6,7 @@ import Home from "./pages/Home";
 import Products from "./pages/Products";
 import Contact from "./pages/Contact";
 import PageNotFound from "./pages/PageNotFound";
-import NewProduct from "./pages/NewProduct";
+import NewProduct from "./features/products/NewProduct";
 import Login from "./pages/Login";
 import Admin from "./pages/Admin";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
