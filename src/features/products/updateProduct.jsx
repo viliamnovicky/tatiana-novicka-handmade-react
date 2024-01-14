@@ -8,32 +8,37 @@ import FormRow, {
   StyledFormSelect,
 } from "../../ui/Form";
 import Button from "../../ui/Button";
-
-import { useForm } from "react-hook-form";
-import { useCategories } from "../categories/useCategories";
-import { useCreateProduct } from "./useCreateProduct";
-import Spinner from "../../ui/Spinner";
 import Modal from "../../ui/Modal";
+import { useEditProduct } from "./useEditProduct";
+import { useCategories } from "../categories/useCategories";
+import Spinner from "../../ui/Spinner";
+import { useForm } from "react-hook-form";
 
-function NewProduct() {
-  const { register, handleSubmit, reset, getValues, formState } = useForm();
+function UpdateProduct({ productToEdit = {} }) {
+    const { id: editId, ...editValues } = productToEdit;
+  const isEditSession = Boolean(editId);
 
+  const { register, handleSubmit, reset, getValues, formState } = useForm({
+      defaultValues: isEditSession ? editValues : {},
+    });
+
+  const { isEditing, editProduct } = useEditProduct();
   const { errors } = formState;
   const { categories, isLoading: isLoadingCategories } = useCategories();
-  const { isCreating, createProduct } = useCreateProduct();
 
-
+  
   function onSubmit(data) {
-
-      createProduct(
-        { ...data, coverImage: data.coverImage[0], discount: 0 },
-        {
-          onSuccess: (data) => {
-            reset();
-            // onCloseModal?.();
-          },
-        }
-      );
+    const coverImage = typeof data.coverImage === "string" ? data.coverImage : data.coverImage[0];
+  
+    editProduct(
+      { newProductData: { ...data, coverImage }, id: editId },
+      {
+        onSuccess: (data) => {
+          reset();
+          // onCloseModal?.();
+        },
+      }
+    );
   }
 
   function onError(errors) {
@@ -44,10 +49,10 @@ function NewProduct() {
 
   return (
     <Modal>
-      <Modal.Open opens="new-product-form">
-        <Button>Pridať nový produkt</Button>
+      <Modal.Open opens="update-product-form">
+        <Button>Upraviť</Button>
       </Modal.Open>
-      <Modal.Window name="new-product-form">
+      <Modal.Window name="update-product-form">
         {/* <HeadingAdmin>Nový produkt</HeadingAdmin> */}
         <StyledForm onSubmit={handleSubmit(onSubmit, onError)}>
           <FormGroup>
@@ -123,12 +128,10 @@ function NewProduct() {
                 type="file"
                 accept="image/*"
                 placeholder="Fotografia"
-                {...register("coverImage", {
-                  required: "Toto pole je povinné",
-                })}
+                {...register("coverImage")}
               />
             </StyledFormContImage>
-            <Button disabled={isCreating}>pridať</Button>
+            <Button disabled={isEditing}>upraviť</Button>
           </FormGroup>
         </StyledForm>
       </Modal.Window>
@@ -136,4 +139,4 @@ function NewProduct() {
   );
 }
 
-export default NewProduct;
+export default UpdateProduct;

@@ -20,7 +20,7 @@ export async function deleteProduct(id) {
 }
 
 export async function createEditProduct(newProduct, id) {
-  const hasImagePath = newProduct.image?.startsWith?.(supabaseUrl);
+  const hasImagePath = newProduct.coverImage?.startsWith?.(supabaseUrl);
   const imageName = `${Math.random()}-${newProduct.coverImage.name}`.replaceAll("/", "");
   const imagePath = hasImagePath
     ? newProduct.coverImage
@@ -36,7 +36,7 @@ export async function createEditProduct(newProduct, id) {
 
   //Edit
   if (id) {
-    query = query.update({ ...newProduct, image: imagePath }).eq("id", id);
+    query = query.update({ ...newProduct, coverImage: imagePath }).eq("id", id);
   }
   const { data, error } = await query.select().single();
 

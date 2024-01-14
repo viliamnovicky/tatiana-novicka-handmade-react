@@ -6,6 +6,7 @@ import HeadingAdmin from "./HeadingAdmin";
 import { useProducts } from "../features/products/useProducts";
 import { useDeleteProduct } from "../features/products/useDeleteProduct";
 import { useCategories } from "../features/categories/useCategories";
+import UpdateProduct from "../features/products/updateProduct";
 
 const Table = styled.div`
   margin-top: 1rem;
@@ -133,7 +134,7 @@ function TableProducts() {
             </TableDiscount>
             <TableColumn key={product.availability}>{product.availability}</TableColumn>
             <Buttons>
-              <Button>upraviť</Button>
+              <UpdateProduct productToEdit={product}/>
               <Button
                 variation="secondary"
                 onClick={() => deleteProduct(product.id)}
