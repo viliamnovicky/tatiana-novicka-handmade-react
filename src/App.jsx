@@ -35,7 +35,6 @@ function App() {
             <Route path="produkty" element={<Products />}></Route>
             <Route path="kontakt" element={<Contact />}></Route>
             <Route path="admin" element={<Admin />}>
-              <Route path="novy-produkt" element={<NewProduct />}></Route>
               <Route path="sprava-produktov" element={<ManageProducts />}></Route>
             </Route>
           </Route>

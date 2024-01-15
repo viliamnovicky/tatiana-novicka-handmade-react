@@ -38,7 +38,7 @@ function Navbar() {
         <StyledNavLink to="kontakt">Kontakt</StyledNavLink>
       </li>
       <li>
-        <StyledNavLink to="admin/novy-produkt">admin</StyledNavLink>
+        <StyledNavLink to="admin/sprava-produktov">admin</StyledNavLink>
       </li>
     </NavList>
   );

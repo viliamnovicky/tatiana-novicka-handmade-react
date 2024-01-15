@@ -1,8 +1,5 @@
 import styled from "styled-components";
-import Button from "./Button";
-import { IoIosAddCircleOutline } from "react-icons/io";
 import { GrDocumentUpdate } from "react-icons/gr";
-import { MdDeleteOutline } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { BiLogOutCircle } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
@@ -52,31 +49,34 @@ const StyledNavLink = styled(NavLink)`
   &:last-child {
     border-bottom: none;
   }
+
+  &:active,
+    &.active:link,
+    &.active:visited {
+      padding-left: 4rem;
+      color: var(--color-primary-950);
+      background: var(--color-primary-100);
+      border-radius: 2rem;
+    }
 `;
 
 function Sidebar() {
   return (
     <StyledSidebar>
-      <StyledNavLink to="novy-produkt">
-        <span>
-          <IoIosAddCircleOutline />
-        </span>{" "}
-        Pridať produkt
-      </StyledNavLink>
       <StyledNavLink to="sprava-produktov">
         <span>
           <GrDocumentUpdate />
         </span>{" "}
         Správa produktov
       </StyledNavLink>
-      
-      <StyledNavLink to="">
+
+      <StyledNavLink to="zmena-hesla">
         <span>
           <RiLockPasswordLine />
         </span>{" "}
         Zmena hesla
       </StyledNavLink>
-      <StyledNavLink to="">
+      <StyledNavLink to="odhlasenie">
         <span>
           <BiLogOutCircle />
         </span>{" "}
