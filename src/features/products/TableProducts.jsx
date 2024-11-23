@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import Spinner from "./Spinner";
-import Button from "./Button";
-import HeadingAdmin from "./HeadingAdmin";
+import Spinner from "../../ui/Spinner";
+import Button from "../../ui/Button";
+import HeadingAdmin from "../../ui/HeadingAdmin";
 
-import { useProducts } from "../features/products/useProducts";
-import { useDeleteProduct } from "../features/products/useDeleteProduct";
-import { useCategories } from "../features/categories/useCategories";
-import UpdateProduct from "../features/products/UpdateProduct";
+import { useProducts } from "./useProducts";
+import { useDeleteProduct } from "./useDeleteProduct";
+import { useCategories } from "../categories/useCategories";
+import UpdateProduct from "./UpdateProduct";
 
 const Table = styled.div`
   margin-top: 1rem;
@@ -119,7 +119,7 @@ function TableProducts() {
         <TableHead>cena</TableHead>
         <TableHead>zľava</TableHead>
         <TableHead>dostupnosť</TableHead>
-        <TableHead></TableHead>
+        <TableHead/>
       </TableRow>
       <Table>
         {products.map((product) => (
@@ -134,7 +134,7 @@ function TableProducts() {
             </TableDiscount>
             <TableColumn key={product.availability}>{product.availability}</TableColumn>
             <Buttons>
-              <UpdateProduct productToEdit={product}/>
+              <UpdateProduct productToEdit={product} />
               <Button
                 variation="secondary"
                 onClick={() => deleteProduct(product.id)}

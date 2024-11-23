@@ -7,29 +7,29 @@ import FormRow, {
   StyledFormLabel,
   StyledFormSelect,
 } from "../../ui/Form";
-import Button from "../../ui/Button";
-import Modal from "../../ui/Modal";
-import { useEditProduct } from "./useEditProduct";
-import { useCategories } from "../categories/useCategories";
-import Spinner from "../../ui/Spinner";
+
 import { useForm } from "react-hook-form";
+import { useCategories } from "../categories/useCategories";
+import { useEditProduct } from "../products/useEditProduct";
+import Spinner from "../../ui/Spinner";
+import Modal from "../../ui/Modal";
+import Button from "../../ui/Button";
 
 function UpdateProduct({ productToEdit = {} }) {
-    const { id: editId, ...editValues } = productToEdit;
+  const { id: editId, ...editValues } = productToEdit;
   const isEditSession = Boolean(editId);
 
   const { register, handleSubmit, reset, getValues, formState } = useForm({
-      defaultValues: isEditSession ? editValues : {},
-    });
-    const { errors } = formState;
+    defaultValues: isEditSession ? editValues : {},
+  });
+  const { errors } = formState;
 
   const { isEditing, editProduct } = useEditProduct();
   const { categories, isLoading: isLoadingCategories } = useCategories();
 
-  
   function onSubmit(data) {
     const coverImage = typeof data.coverImage === "string" ? data.coverImage : data.coverImage[0];
-  
+
     editProduct(
       { newProductData: { ...data, coverImage }, id: editId },
       {

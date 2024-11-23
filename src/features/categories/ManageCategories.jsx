@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import TableProducts from "../ui/TableProducts";
-import Buttons from "../ui/Buttons";
-import NewProduct from "../features/products/NewProduct";
+import Buttons from "../../ui/Buttons";
+import TableCategories from "../categories/TableCategories";
+import NewProduct from "../products/NewProduct";
+
 
 const StyledManageProducts = styled.div`
   position: relative;
@@ -12,7 +13,7 @@ const StyledManageProducts = styled.div`
 function ManageProducts() {
   return (
     <StyledManageProducts>
-      <TableProducts />
+      <TableCategories />
       <Buttons>
         <NewProduct />
       </Buttons>

@@ -18,7 +18,7 @@ export function useLogin() {
     onSuccess: async (user) => {
         queryClient.setQueryData(["user"], user.user)
       queryClient.invalidateQueries(["user"]);
-      navigate("/admin", {replace: true});
+      navigate("/admin/sprava-produktov", {replace: true});
       toast.success("Prihlásenie prebehlo úspešne")
       console.log(user);
     },

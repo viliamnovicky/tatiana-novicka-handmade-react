@@ -1,8 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "../ui/Sidebar";
 import styled from "styled-components";
-import { getProducts } from "../services/apiProducts";
-import { useQuery } from "@tanstack/react-query";
+
 import Modal from "../ui/Modal";
 
 const StyledAdminCont = styled.div`

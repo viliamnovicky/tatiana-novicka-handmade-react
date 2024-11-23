@@ -71,6 +71,12 @@ function Sidebar() {
         </span>{" "}
         Správa produktov
       </StyledNavLink>
+      <StyledNavLink to="sprava-kategorii">
+        <span>
+          <GrDocumentUpdate />
+        </span>{" "}
+        Správa kategórií
+      </StyledNavLink>
 
       <StyledNavLink to="zmena-hesla">
         <span>

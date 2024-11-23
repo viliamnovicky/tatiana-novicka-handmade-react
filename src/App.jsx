@@ -10,10 +10,12 @@ import Login from "./pages/Login";
 import Admin from "./pages/Admin";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import ManageProducts from "./pages/ManageProducts";
+
 import { Toaster } from "react-hot-toast";
 import Product from "./pages/Product";
 import ProtectedRoute from "./ui/ProtectedRoute";
+import ManageProducts from "./features/products/ManageProducts";
+import ManageCategories from "./features/categories/ManageCategories";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -36,6 +38,8 @@ function App() {
             <Route path="produkty" element={<Products />} />
             <Route path="produkty/:productId" element={<Product />} />
             <Route path="kontakt" element={<Contact />} />
+            <Route path="login" element={<Login />} />
+            <Route path="*" element={<PageNotFound />} />
 
             {/* Protected Admin route with nested routes */}
             <Route
@@ -47,10 +51,9 @@ function App() {
               }
             >
               <Route path="sprava-produktov" element={<ManageProducts />} />
+              <Route path="sprava-kategorii" element={<ManageCategories />} />
             </Route>
           </Route>
-          <Route path="*" element={<PageNotFound />} />
-          <Route path="login" element={<Login />} />
         </Routes>
       </BrowserRouter>
       <Toaster

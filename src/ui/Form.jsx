@@ -27,6 +27,9 @@ export const Form = styled.form`
   margin: auto;
   flex-direction: column;
   gap: 2rem;
+  background: white;
+  padding: 2rem;
+  border-radius: 2rem;
 `;
 
 export const FormGroup = styled.div`
