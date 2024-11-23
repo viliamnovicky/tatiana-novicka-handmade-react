@@ -6,13 +6,14 @@ import Home from "./pages/Home";
 import Products from "./pages/Products";
 import Contact from "./pages/Contact";
 import PageNotFound from "./pages/PageNotFound";
-import NewProduct from "./features/products/NewProduct";
 import Login from "./pages/Login";
 import Admin from "./pages/Admin";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import ManageProducts from "./pages/ManageProducts";
 import { Toaster } from "react-hot-toast";
+import Product from "./pages/Product";
+import ProtectedRoute from "./ui/ProtectedRoute";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -30,12 +31,22 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<AppLayout />}>
-            <Route index element={<Navigate replace to="/domov" />}></Route>
-            <Route path="domov" element={<Home />}></Route>
-            <Route path="produkty" element={<Products />}></Route>
-            <Route path="kontakt" element={<Contact />}></Route>
-            <Route path="admin" element={<Admin />}>
-              <Route path="sprava-produktov" element={<ManageProducts />}></Route>
+            <Route index element={<Navigate replace to="/domov" />} />
+            <Route path="domov" element={<Home />} />
+            <Route path="produkty" element={<Products />} />
+            <Route path="produkty/:productId" element={<Product />} />
+            <Route path="kontakt" element={<Contact />} />
+
+            {/* Protected Admin route with nested routes */}
+            <Route
+              path="admin"
+              element={
+                <ProtectedRoute>
+                  <Admin />
+                </ProtectedRoute>
+              }
+            >
+              <Route path="sprava-produktov" element={<ManageProducts />} />
             </Route>
           </Route>
           <Route path="*" element={<PageNotFound />} />
@@ -56,7 +67,7 @@ function App() {
               padding: "16px 24px",
               backgroundColor: "var(--color-grey-50)",
               color: "var(--color-grey-900)",
-              fontWeight: "500"
+              fontWeight: "500",
             },
           })
         }

@@ -37,6 +37,43 @@ const variations = {
       background-color: var(--color-secondary-200);
     }
   `,
+
+  admin: css`
+    outline: none;
+    border: none;
+    font-weight: 400;
+    padding: 2rem 3rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--color-grey-200);
+    font-size: 2rem;
+    background: none;
+    text-align: left;
+    border-radius: 0;
+    color: var(--color-primary-800);
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    box-shadow: none;
+
+    &:hover {
+      color: var(--color-primary-950);
+      padding-left: 4rem;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:active,
+    &.active:link,
+    &.active:visited {
+      padding-left: 4rem;
+      color: var(--color-primary-950);
+      background: var(--color-primary-100);
+      border-radius: 2rem;
+    }
+  `,
+
   danger: css`
     color: var(--color-red-100);
     background-color: var(--color-red-700);
@@ -59,7 +96,7 @@ const Button = styled.button`
 
 Button.defaultProps = {
   variation: "primary",
-  size: "large"
+  size: "large",
 };
 
 export default Button;

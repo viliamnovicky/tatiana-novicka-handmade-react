@@ -3,6 +3,8 @@ import { GrDocumentUpdate } from "react-icons/gr";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { BiLogOutCircle } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
+import Button from "./Button";
+import LogoutButton from "../features/authentication/LogoutButton";
 
 const StyledSidebar = styled.aside`
   width: 40rem;
@@ -76,12 +78,7 @@ function Sidebar() {
         </span>{" "}
         Zmena hesla
       </StyledNavLink>
-      <StyledNavLink to="odhlasenie">
-        <span>
-          <BiLogOutCircle />
-        </span>{" "}
-        Odhlásiť
-      </StyledNavLink>
+      <LogoutButton/>
     </StyledSidebar>
   );
 }

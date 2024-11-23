@@ -6,7 +6,7 @@ import HeadingAdmin from "./HeadingAdmin";
 import { useProducts } from "../features/products/useProducts";
 import { useDeleteProduct } from "../features/products/useDeleteProduct";
 import { useCategories } from "../features/categories/useCategories";
-import UpdateProduct from "../features/products/updateProduct";
+import UpdateProduct from "../features/products/UpdateProduct";
 
 const Table = styled.div`
   margin-top: 1rem;

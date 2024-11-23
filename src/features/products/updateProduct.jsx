@@ -21,9 +21,9 @@ function UpdateProduct({ productToEdit = {} }) {
   const { register, handleSubmit, reset, getValues, formState } = useForm({
       defaultValues: isEditSession ? editValues : {},
     });
+    const { errors } = formState;
 
   const { isEditing, editProduct } = useEditProduct();
-  const { errors } = formState;
   const { categories, isLoading: isLoadingCategories } = useCategories();
 
   
