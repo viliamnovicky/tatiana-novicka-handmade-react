@@ -9,7 +9,15 @@ const StyledSidebar = styled.aside`
   display: flex;
   flex-direction: column;
   border: none;
+  padding-right: 3rem;
   padding-top: 4.5rem;
+
+  .active {
+    background: var(--color-primary-400);
+    border-radius: 1rem;
+    color: var(--color-primary-50);
+    padding-left: 5rem;
+  }
 
   span {
     font-size: 2.5rem;
@@ -30,7 +38,7 @@ export const SidebarNavlink = styled(NavLink)`
   font-weight: 400;
   padding: 2rem 3rem;
   text-transform: uppercase;
-  border-bottom: 1px solid var(--color-grey-200);
+  border-bottom: 1px solid var(--color-primary-100);
   font-size: 2rem;
   background: none;
   text-align: left;
@@ -54,8 +62,8 @@ export const SidebarNavlink = styled(NavLink)`
     &.active:link,
     &.active:visited {
       padding-left: 4rem;
-      color: var(--color-primary-950);
-      background: var(--color-primary-100);
+      color: var(--color-primary-50);
+      background: var(--color-primary-400);
       border-radius: 2rem;
     }
 `;

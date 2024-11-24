@@ -1,18 +1,18 @@
 import styled from "styled-components";
 import ProductsContainer from "../features/products/ProductsContainer";
-import Sidebar from "../ui/Sidebar";
-import { Outlet } from "react-router-dom";
-import Modal from "../ui/Modal";
+import ProductsSidebar from "../features/products/ProductsSidebar";
 
 const StyledProductsCont = styled.div`
   display: grid;
   grid-template-columns: 1fr 5fr;
+  overflow: hidden;
+  height: auto;
 `;
 
 function Products() {
   return (
     <StyledProductsCont>
-      <Sidebar />
+      <ProductsSidebar />
       <ProductsContainer />
     </StyledProductsCont>
   );

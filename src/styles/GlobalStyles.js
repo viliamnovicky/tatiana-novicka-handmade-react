@@ -38,6 +38,17 @@ const GlobalStyles = createGlobalStyle`
   --color-grey-900: #1c1917;
   --color-grey-950: #0c0a09;
 
+  --color-green-50: #e8fff0;
+--color-green-100: #e1ffea;
+--color-green-200: #dbffe4;
+--color-green-300: #d4ffdd;
+--color-green-400: #ceffd7;
+--color-green-500: #cafad3;
+--color-green-600: #c6f5ce;
+--color-green-700: #c2f0ca;
+--color-green-800: #beebc6;
+--color-green-950: #b9e6c2;
+
   --backdrop-color: rgba(103, 232, 249, .1);
 
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);

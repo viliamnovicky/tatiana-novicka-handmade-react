@@ -6,24 +6,8 @@ import HeadingAdmin from "../../ui/HeadingAdmin";
 import Button from "../../ui/Button";
 import UpdateCategory from "../categories/Updatecategory";
 import {useDeleteCategory} from "./useDeleteCategory"
-import { Buttons, TableHead, TableRow } from "../../ui/Table";
-
-const Table = styled.div`
-  margin-top: 1rem;
-  height: 48vh;
-  overflow: scroll;
-  padding-left: 1.5rem;
-  padding: 2rem;
-`;
-
-const TableColumn = styled.div`
-  text-align: center;
-  border-right: 1px solid var(--color-grey-300);
-  height: 7rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
+import { Buttons, Table, TableColumn, TableHead, TableRow } from "../../ui/Table";
+import toast from "react-hot-toast";
 
 const TableName = styled.div`
   text-transform: uppercase;
@@ -31,7 +15,6 @@ const TableName = styled.div`
   font-size: 1.6rem;
   text-align: left;
   padding-left: 2rem;
-  height: 7rem;
   display: flex;
   align-items: center;
   border-right: 1px solid var(--color-grey-300);
@@ -44,9 +27,10 @@ const Image = styled.img`
 
 function TableProducts() {
   const { isLoading, categories } = useCategories();
-  const {isDeleting, deleteCategory} = useDeleteCategory()
+  const {isDeleting, deleteCategory, error} = useDeleteCategory()
 
   if (isLoading) return <Spinner />;
+
   return (
     <>
       <HeadingAdmin>Správa produktov</HeadingAdmin>
@@ -56,9 +40,9 @@ function TableProducts() {
         <TableHead>akcie</TableHead>
         
       </TableRow>
-      <Table>
+      <Table margin="left">
         {categories.map((category) => (
-          <TableRow key={category.name + category.id} grid="categories">
+          <TableRow key={category.name + category.id} grid="categories" >
             <TableColumn>
               <Image src={category.coverImage} />
             </TableColumn>

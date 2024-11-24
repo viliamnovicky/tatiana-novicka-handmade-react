@@ -38,7 +38,17 @@ const variations = {
     }
   `,
 
-  admin: css`
+  cart: css`
+    background: var(--color-green-200); 
+    color: var(--color-grey-950); 
+    font-size: 2rem;
+
+    &:hover {
+      background: var(--color-green-800); 
+    }
+  `,
+
+  sidebar: css`
     outline: none;
     border: none;
     font-weight: 400;
@@ -94,6 +104,10 @@ const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  span {
+    padding-left: 1rem;
+  }
 
   ${(props) => sizes[props.size]}
   ${(props) => variations[props.variation]}

@@ -7,65 +7,17 @@ import { useProducts } from "./useProducts";
 import { useDeleteProduct } from "./useDeleteProduct";
 import { useCategories } from "../categories/useCategories";
 import UpdateProduct from "./UpdateProduct";
-import { Buttons, TableHead, TableRow } from "../../ui/Table";
-
-const Table = styled.div`
-  margin-top: 1rem;
-  height: 50vh;
-  overflow: scroll;
-  padding-left: 1.5rem;
-`;
-
-const TableColumn = styled.div`
-  text-align: center;
-  border-right: 1px solid var(--color-grey-300);
-  height: 7rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const TableName = styled.div`
-  text-transform: uppercase;
-  font-weight: 600;
-  font-size: 1.6rem;
-  text-align: left;
-  padding-left: 2rem;
-  height: 7rem;
-  display: flex;
-  align-items: center;
-  border-right: 1px solid var(--color-grey-300);
-`;
-
-const TablePrice = styled.div`
-  text-align: center;
-  font-weight: 600;
-  font-size: 1.6rem;
-  height: 7rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-right: 1px solid var(--color-grey-300);
-`;
-
-const TableDiscount = styled.div`
-  height: 7rem;
-  display: flex;
-  align-items: center;
-  border-right: 1px solid var(--color-grey-300);
-  & span {
-    display: flex;
-    background: #ceffd7;
-    border-radius: 5rem;
-    font-size: 1.6rem;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    width: 5rem;
-    height: 5rem;
-    margin: auto;
-  }
-`;
+import {
+  Buttons,
+  Table,
+  TableColumn,
+  TableDiscount,
+  TableHead,
+  TableName,
+  TablePrice,
+  TableRow,
+} from "../../ui/Table";
+import { FaLongArrowAltDown, FaLongArrowAltUp } from "react-icons/fa";
 
 const Image = styled.img`
   width: 6rem;
@@ -81,6 +33,26 @@ function TableProducts() {
   return (
     <>
       <HeadingAdmin>Správa produktov</HeadingAdmin>
+
+      <TableRow color="primary" grid="sort">
+        <TableHead>Zoradiť</TableHead>
+        <Button size="medium">
+          cena{" "}
+          <span>
+            <FaLongArrowAltUp />
+          </span>
+        </Button>
+        <Button size="medium">
+          cena
+          <span>
+            <FaLongArrowAltDown />
+          </span>
+        </Button>
+        <TableHead>dostupnosť</TableHead>
+        <Button size="medium">na objednávku</Button>
+        <Button size="medium">skladom</Button>
+      </TableRow>
+
       <TableRow color="primary" grid="products">
         <TableHead>fotka</TableHead>
         <TableHead>meno</TableHead>
@@ -89,7 +61,7 @@ function TableProducts() {
         <TableHead>dostupnosť</TableHead>
         <TableHead>akcie</TableHead>
       </TableRow>
-      <Table>
+      <Table margin="left">
         {products.map((product) => (
           <TableRow key={product.name + product.id} grid="products">
             <TableColumn>

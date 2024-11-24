@@ -14,6 +14,7 @@ import { useCategories } from "../categories/useCategories";
 import { useCreateProduct } from "./useCreateProduct";
 import Spinner from "../../ui/Spinner";
 import Modal from "../../ui/Modal";
+import { useState } from "react";
 
 function NewProduct() {
   const { register, handleSubmit, reset, getValues, formState } = useForm();
@@ -21,12 +22,13 @@ function NewProduct() {
   const { errors } = formState;
   const { categories, isLoading: isLoadingCategories } = useCategories();
   const { isCreating, createProduct } = useCreateProduct();
+  const [categoryName, setCategoryName] = useState("")
 
 
   function onSubmit(data) {
 
       createProduct(
-        { ...data, coverImage: data.coverImage[0], discount: 0 },
+        { ...data, coverImage: data.coverImage[0], discount: 0, categoryName },
         {
           onSuccess: (data) => {
             reset();
@@ -103,6 +105,7 @@ function NewProduct() {
                 placeholder="Kategória"
                 {...register("category", {
                   required: "Toto pole je povinné",
+                  onChange: (e) => setCategoryName(e.target.options[e.target.selectedIndex].text),
                 })}
               >
                 {categories.map((category) => (

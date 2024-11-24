@@ -5,7 +5,7 @@ import {useLogout} from "../authentication/useLogout"
 function LogoutButton() {
     const {logout, isLoading} = useLogout()
   return (
-    <Button variation="admin" onClick={logout} >
+    <Button variation="sidebar" onClick={logout} >
       <span>
         <BiLogOutCircle />
       </span>{" "}

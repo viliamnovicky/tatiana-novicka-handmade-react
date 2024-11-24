@@ -10,6 +10,16 @@ export async function getProducts() {
   return data;
 }
 
+export async function getProductsByCategory(category) {
+  const { data, error } = await supabase.from("products").select("*").eq("category", category);
+
+  if (error) {
+    throw new Error("Nepodarilo sa načítať produkty");
+  }
+
+  return data;
+}
+
 export async function deleteProduct(id) {
   const { error } = await supabase.from("products").delete().eq("id", id);
 
