@@ -7,20 +7,13 @@ import { useProducts } from "./useProducts";
 import { useDeleteProduct } from "./useDeleteProduct";
 import { useCategories } from "../categories/useCategories";
 import UpdateProduct from "./UpdateProduct";
+import { Buttons, TableHead, TableRow } from "../../ui/Table";
 
 const Table = styled.div`
   margin-top: 1rem;
   height: 50vh;
   overflow: scroll;
   padding-left: 1.5rem;
-`;
-
-const TableRow = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr 2fr;
-  align-items: center;
-  max-width: 150rem;
-  margin: auto;
 `;
 
 const TableColumn = styled.div`
@@ -30,13 +23,6 @@ const TableColumn = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`;
-
-const TableHead = styled.div`
-  text-align: center;
-  text-transform: uppercase;
-  padding-bottom: 1rem;
-  font-weight: 500;
 `;
 
 const TableName = styled.div`
@@ -86,24 +72,6 @@ const Image = styled.img`
   margin: auto;
 `;
 
-const Buttons = styled.td`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin: auto;
-  height: 7rem;
-
-  & button {
-    height: 4rem;
-    width: 13rem;
-    display: flex;
-    align-self: center;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-  }
-`;
-
 function TableProducts() {
   const { isLoading, products } = useProducts();
   const { isDeleting, deleteProduct } = useDeleteProduct();
@@ -113,17 +81,17 @@ function TableProducts() {
   return (
     <>
       <HeadingAdmin>Správa produktov</HeadingAdmin>
-      <TableRow>
+      <TableRow color="primary" grid="products">
         <TableHead>fotka</TableHead>
         <TableHead>meno</TableHead>
         <TableHead>cena</TableHead>
         <TableHead>zľava</TableHead>
         <TableHead>dostupnosť</TableHead>
-        <TableHead/>
+        <TableHead>akcie</TableHead>
       </TableRow>
       <Table>
         {products.map((product) => (
-          <TableRow key={product.name + product.id}>
+          <TableRow key={product.name + product.id} grid="products">
             <TableColumn>
               <Image src={product.coverImage} />
             </TableColumn>
@@ -137,6 +105,7 @@ function TableProducts() {
               <UpdateProduct productToEdit={product} />
               <Button
                 variation="secondary"
+                size="small"
                 onClick={() => deleteProduct(product.id)}
                 disabled={isDeleting}
               >

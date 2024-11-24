@@ -13,7 +13,7 @@ export async function getCategories() {
 
 export async function createCategory(newCategory) {
   const imageName = `${Math.random()}-${newCategory.coverImage.name}`.replaceAll("/", "");
-  const imagePath = `${supabaseUrl}/storage/v1/object/public/products/${imageName}`;
+  const imagePath = `${supabaseUrl}/storage/v1/object/public/categories/${imageName}`;
 
   //Create Category
   const { data, error } = await supabase
@@ -33,5 +33,14 @@ export async function createCategory(newCategory) {
   if (storageError) {
     await supabase.from("categories").delete().eq("id", data.id);
     throw new Error("Nepodarilo sa nahrať fotografiu. Kategória sa neuložila");
+  }
+}
+
+export async function deleteCategory(id) {
+  const { error } = await supabase.from("categories").delete().eq("id", id);
+
+  if (error) {
+    console.error(error);
+    throw new Error("Niečo sa nepodarilo");
   }
 }

@@ -3,6 +3,7 @@ import Sidebar from "../ui/Sidebar";
 import styled from "styled-components";
 
 import Modal from "../ui/Modal";
+import AdminSidebar from "../features/dashboard/AdminSidebar";
 
 const StyledAdminCont = styled.div`
   display: grid;
@@ -12,9 +13,9 @@ const StyledAdminCont = styled.div`
 function Admin() {
   return (
     <StyledAdminCont>
-      <Sidebar />
+        <AdminSidebar />
       <Outlet />
-      <Modal/>
+      <Modal />
     </StyledAdminCont>
   );
 }

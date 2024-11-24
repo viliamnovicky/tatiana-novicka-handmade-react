@@ -1,6 +1,22 @@
 import styled, { css } from "styled-components";
 
+const positions = {
+  center_sidebar: css`
+    position: absolute;
+    top: 50%;
+    left: calc(50% + 20rem);
+    transform: translate(-50%, -50%);
+  `
+}
+
 export const FormError = styled.p`
+  display: inline;
+  color: var(--color-secondary-400);
+  position: absolute;
+  right: 1rem;
+`;
+
+export const Error = styled.p`
   display: inline;
   color: var(--color-secondary-400);
   position: absolute;
@@ -23,6 +39,7 @@ export const StyledForm = styled.form`
 
 export const Form = styled.form`
   min-width: 50rem;
+  max-width: 55rem;
   display: flex;
   margin: auto;
   flex-direction: column;
@@ -30,10 +47,15 @@ export const Form = styled.form`
   background: white;
   padding: 2rem;
   border-radius: 2rem;
+
+  ${(props) => positions[props.position]}
 `;
 
 export const FormGroup = styled.div`
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 `;
 
 export const StyledFormCont = styled.div`
@@ -68,7 +90,6 @@ export const StyledFormLabel = styled.label`
   position: relative;
 `;
 export const Label = styled.label`
-  padding-bottom: 0.5rem;
   padding-left: 1.5rem;
   font-size: 2rem;
   font-weight: 500;
@@ -80,8 +101,8 @@ export const Input = styled.input`
   border-radius: 3rem;
   outline: none;
   border: 1px solid var(--color-grey-100);
-  outline: 5px solid var(--color-primary-50);
-  background: var(--color-grey-200);
+  outline: 5px solid var(--color-primary-100);
+  background: white;
   font-size: 1.8rem;
   width: 100%;
   width: 100%;

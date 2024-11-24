@@ -50,7 +50,7 @@ function UpdateProduct({ productToEdit = {} }) {
   return (
     <Modal>
       <Modal.Open opens="update-product-form">
-        <Button>Upraviť</Button>
+        <Button size="small">Upraviť</Button>
       </Modal.Open>
       <Modal.Window name="update-product-form">
         {/* <HeadingAdmin>Nový produkt</HeadingAdmin> */}

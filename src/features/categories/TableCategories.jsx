@@ -4,42 +4,16 @@ import { useCategories } from "./useCategories";
 import Spinner from "../../ui/Spinner";
 import HeadingAdmin from "../../ui/HeadingAdmin";
 import Button from "../../ui/Button";
-import UpdateProduct from "../products/UpdateProduct";
-
-const colors = {
-  primary: css`
-    background: var(--color-primary-400);
-    border-radius: 1rem;
-    color: var(--color-primary-50);
-  `,
-  medium: css`
-    font-size: 1.4rem;
-    padding: 1.2rem 1.6rem;
-    font-weight: 500;
-  `,
-  large: css`
-    font-size: 1.6rem;
-    padding: 1.2rem 2.4rem;
-    font-weight: 500;
-  `,
-};
+import UpdateCategory from "../categories/Updatecategory";
+import {useDeleteCategory} from "./useDeleteCategory"
+import { Buttons, TableHead, TableRow } from "../../ui/Table";
 
 const Table = styled.div`
   margin-top: 1rem;
-  height: 50vh;
+  height: 48vh;
   overflow: scroll;
   padding-left: 1.5rem;
   padding: 2rem;
-`;
-
-const TableRow = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  align-items: center;
-  max-width: 100rem;
-  margin: auto;
-  padding: 1rem;
-  ${(props) => colors[props.color]}
 `;
 
 const TableColumn = styled.div`
@@ -49,12 +23,6 @@ const TableColumn = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`;
-
-const TableHead = styled.div`
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: 500;
 `;
 
 const TableName = styled.div`
@@ -74,33 +42,15 @@ const Image = styled.img`
   margin: auto;
 `;
 
-const Buttons = styled.td`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin: auto;
-  height: 7rem;
-  padding-left: 2rem;
-
-  & button {
-    height: 4rem;
-    width: 13rem;
-    display: flex;
-    align-self: center;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-  }
-`;
-
 function TableProducts() {
   const { isLoading, categories } = useCategories();
+  const {isDeleting, deleteCategory} = useDeleteCategory()
 
   if (isLoading) return <Spinner />;
   return (
     <>
       <HeadingAdmin>Správa produktov</HeadingAdmin>
-      <TableRow color="primary">
+      <TableRow color="primary" grid="categories">
         <TableHead>fotka</TableHead>
         <TableHead>názov</TableHead>
         <TableHead>akcie</TableHead>
@@ -108,17 +58,18 @@ function TableProducts() {
       </TableRow>
       <Table>
         {categories.map((category) => (
-          <TableRow key={category.name + category.id}>
+          <TableRow key={category.name + category.id} grid="categories">
             <TableColumn>
               <Image src={category.coverImage} />
             </TableColumn>
             <TableName key={category.name}>{category.name}</TableName>
             <Buttons>
-              <UpdateProduct productToEdit={category} />
+              <UpdateCategory productToEdit={category} />
               <Button
                 variation="secondary"
-                onClick={() => console.log(category.id)}
-                // disabled={isDeleting}
+                size="medium"
+                onClick={() => deleteCategory(category.id)}
+                disabled={isDeleting}
               >
                 odstrániť
               </Button>

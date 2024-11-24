@@ -1,9 +1,7 @@
 import styled from "styled-components";
 import { GrDocumentUpdate } from "react-icons/gr";
 import { RiLockPasswordLine } from "react-icons/ri";
-import { BiLogOutCircle } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
-import Button from "./Button";
 import LogoutButton from "../features/authentication/LogoutButton";
 
 const StyledSidebar = styled.aside`
@@ -26,7 +24,7 @@ const StyledSidebar = styled.aside`
   }
 `;
 
-const StyledNavLink = styled(NavLink)`
+export const SidebarNavlink = styled(NavLink)`
   outline: none;
   border: none;
   font-weight: 400;
@@ -62,29 +60,10 @@ const StyledNavLink = styled(NavLink)`
     }
 `;
 
-function Sidebar() {
+function Sidebar({children}) {
   return (
     <StyledSidebar>
-      <StyledNavLink to="sprava-produktov">
-        <span>
-          <GrDocumentUpdate />
-        </span>{" "}
-        Správa produktov
-      </StyledNavLink>
-      <StyledNavLink to="sprava-kategorii">
-        <span>
-          <GrDocumentUpdate />
-        </span>{" "}
-        Správa kategórií
-      </StyledNavLink>
-
-      <StyledNavLink to="zmena-hesla">
-        <span>
-          <RiLockPasswordLine />
-        </span>{" "}
-        Zmena hesla
-      </StyledNavLink>
-      <LogoutButton/>
+      {children}
     </StyledSidebar>
   );
 }

@@ -8,12 +8,12 @@ const StyledModal = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: var(--color-grey-100);
+  background-color: var(--color-white);
   border-radius: 2rem;
   padding: 3.2rem 4rem;
   transition: all 0.5s;
-  width: 80vw;
-  height: 80vh;
+  width: auto;
+  height: auto;
 `;
 
 const Overlay = styled.div`
@@ -41,6 +41,7 @@ const Button = styled.button`
   justify-content: center;
   align-items: center;
   color: var(--color-grey-800);
+  background: var(--color-grey-50);
 
   &:hover {
     background: var(--color-grey-200);
@@ -56,23 +57,6 @@ const Button = styled.button`
   }
 `;
 
-// function Modal() {
-//   const [openName, setOpenName] = useState("");
-
-//   const close = () => setOpenName("");
-//   const open = setOpenName;
-
-//   return (
-//     <Overlay>
-//       <StyledModal>
-//         <Button>✖</Button>
-//         <NewProduct/>
-//       </StyledModal>
-//     </Overlay>
-//   );
-// }
-
-// export default Modal;
 
 // 1. New Context
 const ModalContext = createContext();

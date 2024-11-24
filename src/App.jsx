@@ -16,6 +16,7 @@ import Product from "./pages/Product";
 import ProtectedRoute from "./ui/ProtectedRoute";
 import ManageProducts from "./features/products/ManageProducts";
 import ManageCategories from "./features/categories/ManageCategories";
+import ChangePasswordForm from "./features/authentication/ChangePasswordForm";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -52,6 +53,7 @@ function App() {
             >
               <Route path="sprava-produktov" element={<ManageProducts />} />
               <Route path="sprava-kategorii" element={<ManageCategories />} />
+              <Route path="zmena-hesla" element={<ChangePasswordForm />} />
             </Route>
           </Route>
         </Routes>

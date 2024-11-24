@@ -3,15 +3,15 @@ import styled, { css } from "styled-components";
 const sizes = {
   small: css`
     font-size: 1.2rem;
-    padding: 0.4rem 0.8rem;
+    width: 10rem;
+    height: 3rem;
     text-transform: uppercase;
     font-weight: 600;
-    text-align: center;
   `,
   medium: css`
     font-size: 1.4rem;
-    padding: 1.2rem 1.6rem;
-    font-weight: 500;
+    width: 12rem;
+    height: 4rem;
   `,
   large: css`
     font-size: 1.6rem;
@@ -52,6 +52,7 @@ const variations = {
     color: var(--color-primary-800);
     display: flex;
     align-items: center;
+    justify-content: left !important;
     gap: 2rem;
     box-shadow: none;
 
@@ -89,6 +90,10 @@ const Button = styled.button`
   border-radius: 10rem;
   box-shadow: var(--shadow-sm);
   text-transform: uppercase;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   ${(props) => sizes[props.size]}
   ${(props) => variations[props.variation]}
