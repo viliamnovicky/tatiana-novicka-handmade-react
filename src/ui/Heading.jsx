@@ -1,8 +1,10 @@
 import styled, { css } from "styled-components";
 
-// const test = css`
-//     text-align: center;
-// `
+const fonts = {
+  hand: css`
+    font-family: var(--font-dancing);
+  `
+}
 
 const Heading = styled.h1`
   ${(props) =>
@@ -24,6 +26,11 @@ const Heading = styled.h1`
       font-weight: 500;
     `}
   line-height: 1.5;
+  ${(props) => fonts[props.font]}
+  margin: auto;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 2rem;
 `;
 
 export default Heading

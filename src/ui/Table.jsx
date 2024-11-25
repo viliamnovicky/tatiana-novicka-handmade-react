@@ -15,13 +15,16 @@ const colors = {
 
 const grids = {
   products: css`
+    grid-template-columns: 1fr 1.5fr 1fr 1fr 2fr;
+  `,
+  admin: css`
     grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr 2fr;
   `,
   categories: css`
     grid-template-columns: 1fr 1fr 1fr;
   `,
-  sort: css`
-    grid-template-columns: repeat(7, 1fr);
+  filter: css`
+    display: flex;
     align-items: center;
     justify-content: space-evenly !important;
   `,

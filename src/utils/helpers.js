@@ -9,3 +9,7 @@ export function removeDiacritics(word) {
     .normalize("NFD") // Decompose diacritic characters
     .replace(/[\u0300-\u036f]/g, ""); // Remove combining diacritic marks
 }
+
+export function capitalize(word) {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+}

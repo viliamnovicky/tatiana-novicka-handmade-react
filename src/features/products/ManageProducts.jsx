@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import TableProducts from "./TableProducts";
+import TableProducts from "../dashboard/AdminProducts";
 import NewProduct from "./NewProduct";
 import Buttons from "../../ui/Buttons";
 

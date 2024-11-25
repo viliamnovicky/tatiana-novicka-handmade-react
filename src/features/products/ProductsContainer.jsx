@@ -1,29 +1,33 @@
+import ProductsList from "./ProductsList";
+
+import { Table } from "../../ui/Table";
+
+import Heading from "../../ui/Heading";
+import ProductsFilter from "./ProductsFilter";
 import styled from "styled-components";
-import ProductList from "./ProductList";
+import { useSearchParams } from "react-router-dom";
+import { capitalize } from "../../utils/helpers";
 
-import { Table, TableHead, TableRow } from "../../ui/Table";
-import Button from "../../ui/Button";
+const StyledProductsContainer = styled.div`
+  height: 100%;
+`;
 
-import { FaLongArrowAltDown, FaLongArrowAltUp } from "react-icons/fa";
+function ProductsContainer() {
+  const [searchParams] = useSearchParams();
 
-
-function ProductsContainer({ children }) {
+  const headingTitle =
+    !searchParams.get("kategória") || searchParams.get("kategória") === "všetky"
+      ? "Všetky produkty"
+      : capitalize(searchParams.get("kategória"));
 
   return (
-    <>
-    <Table>
-      <TableRow color="primary" grid="sort">
-        <TableHead>Zoradiť</TableHead>
-        <Button size="medium">cena <span><FaLongArrowAltUp /></span>
-        </Button>
-        <Button size="medium">cena<span><FaLongArrowAltDown /></span></Button>
-        <TableHead>dostupnosť</TableHead>
-        <Button size="medium">na objednávku</Button>
-        <Button size="medium">skladom</Button>
-      </TableRow>
-      <ProductList/>
-    </Table>
-    </>
+    <StyledProductsContainer>
+      <Heading font="hand">{headingTitle}</Heading>
+      <ProductsFilter />
+      <Table>
+        <ProductsList />
+      </Table>
+    </StyledProductsContainer>
   );
 }
 

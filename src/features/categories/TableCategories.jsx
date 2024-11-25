@@ -1,13 +1,12 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 import { useCategories } from "./useCategories";
 import Spinner from "../../ui/Spinner";
-import HeadingAdmin from "../../ui/HeadingAdmin";
 import Button from "../../ui/Button";
 import UpdateCategory from "../categories/Updatecategory";
 import {useDeleteCategory} from "./useDeleteCategory"
 import { Buttons, Table, TableColumn, TableHead, TableRow } from "../../ui/Table";
-import toast from "react-hot-toast";
+import Heading from "../../ui/Heading";
 
 const TableName = styled.div`
   text-transform: uppercase;
@@ -33,7 +32,7 @@ function TableProducts() {
 
   return (
     <>
-      <HeadingAdmin>Správa produktov</HeadingAdmin>
+      <Heading font="hand">Správa kategórií</Heading>
       <TableRow color="primary" grid="categories">
         <TableHead>fotka</TableHead>
         <TableHead>názov</TableHead>

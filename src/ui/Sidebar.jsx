@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import LogoutButton from "../features/authentication/LogoutButton";
 
 const StyledSidebar = styled.aside`
-  width: 40rem;
+  width: 35rem;
   display: flex;
   flex-direction: column;
   border: none;

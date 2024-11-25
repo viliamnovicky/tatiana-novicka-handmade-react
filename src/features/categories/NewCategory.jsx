@@ -1,11 +1,6 @@
-import FormRow, {
+import {
   FormError,
   FormGroup,
-  StyledForm,
-  StyledFormContImage,
-  StyledFormInput,
-  StyledFormLabel,
-  StyledFormSelect,
   Error,
   Form,
   Input,
@@ -14,14 +9,13 @@ import FormRow, {
 import Button from "../../ui/Button";
 
 import { useForm } from "react-hook-form";
-import { useCategories } from "./useCategories";
 import Spinner from "../../ui/Spinner";
 import Modal from "../../ui/Modal";
 import { useCreateCategory } from "./useCreateCategory";
-import HeadingAdmin from "../../ui/HeadingAdmin";
+import Heading from "../../ui/Heading";
 
 function NewCategory() {
-  const { register, handleSubmit, reset, getValues, formState } = useForm();
+  const { register, handleSubmit, reset, formState } = useForm();
 
   const { errors } = formState;
   //const { categories, isLoading: isLoadingCategories } = useCategories();
@@ -52,7 +46,7 @@ function NewCategory() {
       </Modal.Open>
       <Modal.Window name="new-category-form">
         <Form onSubmit={handleSubmit(onSubmit, onError)}>
-        <HeadingAdmin>Nová kategória</HeadingAdmin>
+        <Heading font="hand">Nová kategória</Heading>
           <FormGroup>
             <Label>Názov kategórie
             <Error>{errors?.name?.message}</Error>

@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import Spinner from "../../ui/Spinner";
 import Button from "../../ui/Button";
-import HeadingAdmin from "../../ui/HeadingAdmin";
+import Heading from "../../ui/Heading";
 
-import { useProducts } from "./useProducts";
-import { useDeleteProduct } from "./useDeleteProduct";
-import { useCategories } from "../categories/useCategories";
-import UpdateProduct from "./UpdateProduct";
+import { useProducts } from "../products/useProducts";
+import { useDeleteProduct } from "../products/useDeleteProduct";
+import UpdateProduct from "../products/UpdateProduct";
+
 import {
   Buttons,
   Table,
@@ -17,7 +17,9 @@ import {
   TablePrice,
   TableRow,
 } from "../../ui/Table";
+
 import { FaLongArrowAltDown, FaLongArrowAltUp } from "react-icons/fa";
+import { useSearchParams } from "react-router-dom";
 
 const Image = styled.img`
   width: 6rem;
@@ -27,14 +29,14 @@ const Image = styled.img`
 function TableProducts() {
   const { isLoading, products } = useProducts();
   const { isDeleting, deleteProduct } = useDeleteProduct();
-  const { isLoading: isLoadingCategories, categories } = useCategories();
 
   if (isLoading) return <Spinner />;
+
   return (
     <>
-      <HeadingAdmin>Správa produktov</HeadingAdmin>
+      <Heading font="hand">Spráava produktov</Heading>
 
-      <TableRow color="primary" grid="sort">
+      <TableRow color="primary" grid="filter">
         <TableHead>Zoradiť</TableHead>
         <Button size="medium">
           cena{" "}
@@ -53,7 +55,7 @@ function TableProducts() {
         <Button size="medium">skladom</Button>
       </TableRow>
 
-      <TableRow color="primary" grid="products">
+      <TableRow color="primary" grid="admin">
         <TableHead>fotka</TableHead>
         <TableHead>meno</TableHead>
         <TableHead>cena</TableHead>
@@ -63,7 +65,7 @@ function TableProducts() {
       </TableRow>
       <Table margin="left">
         {products.map((product) => (
-          <TableRow key={product.name + product.id} grid="products">
+          <TableRow key={product.name + product.id} grid="admin">
             <TableColumn>
               <Image src={product.coverImage} />
             </TableColumn>
