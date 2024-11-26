@@ -23,6 +23,10 @@ const sizes = {
     font-size: 1.2rem;
     padding: 1rem 1rem;
     font-weight: 800;
+
+    &:active {
+      background: var(--color-primary-600)
+    }
   `,
 };
 
@@ -110,6 +114,13 @@ const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  ${(props) =>
+    props.active &&
+    css`
+      background: var(--color-primary-600) !important;
+      
+    `}
 
   span {
     padding-left: 1rem;

@@ -22,6 +22,7 @@ function ProductsList() {
 
   const [searchParams] = useSearchParams();
   const category = searchParams.get("kategória") || "všetky";
+  const avail = searchParams.get("filter") || "všetky"
   const { products, isLoading } = useProducts();
 
   if (isLoading) return <Spinner />;
@@ -31,10 +32,21 @@ function ProductsList() {
   if (category === "všetky") {filteredProducts = products}
   if (category !== "všetky") {filteredProducts = products.filter((product) => product.categoryName === category)}
   
+  if(avail === "všetky") {filteredProducts}
+  if (avail !== "všetky") {filteredProducts = filteredProducts.filter((product) => product.availability === avail)}
+
+  
+  // Sort
+  const sortBy = searchParams.get("sort") || "price-asc"
+  const [field, direction] = sortBy.split("-")
+console.log(field)
+  const modifier = direction === "asc" ? 1 : -1
+  const sortedProducts = filteredProducts.sort((a, b) => (a[field] - b[field]) * modifier)
+console.log(sortedProducts)
   return (
     <>
       {
-        filteredProducts.map((product) => (
+        sortedProducts.map((product) => (
           <TableRow height="ten" key={product.name + product.id} grid="products">
             <TableColumn>
               <Image src={product.coverImage} />

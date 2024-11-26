@@ -2,34 +2,45 @@ import { FaLongArrowAltDown, FaLongArrowAltRight, FaLongArrowAltUp } from "react
 import Button from "../../ui/Button";
 import { TableHead, TableRow } from "../../ui/Table";
 
-import { FaArrowDownAZ, FaArrowDownZA } from "react-icons/fa6";
+import { useSearchParams } from "react-router-dom";
 
 function ProductsFilter() {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const activeFilter = searchParams.get("filter");
+  console.log(activeFilter)
+  const activeSort = searchParams.get("sort");
+
+  function handleSetParams(param, value) {
+    searchParams.set(param, value);
+    setSearchParams(searchParams)
+  }
   return (
     <TableRow color="primary" grid="filter">
       <TableHead>Zoradiť</TableHead>
-      <Button size="filter">
+      <Button active={!activeSort || activeSort === "price-asc"} size="filter" onClick={() => handleSetParams("sort","price-asc")}>
         cena{" "}
         <span>
           <FaLongArrowAltUp />
         </span>
       </Button>
-      <Button size="filter">
+      <Button active={activeSort === "price-desc"} size="filter" onClick={() => handleSetParams("sort","price-desc")}>
         cena
         <span>
           <FaLongArrowAltDown />
         </span>
       </Button>
-      <Button size="filter">
+      <Button active={activeSort === "name-asc"} size="filter" onClick={() => handleSetParams("sort","name-asc")}>
         A <FaLongArrowAltRight />Z
       </Button>
-      <Button size="filter">
+      <Button active={activeSort === "name-desc"} size="filter" onClick={() => handleSetParams("sort","name-desc")}>
         Z <FaLongArrowAltRight /> A
       </Button>
       <TableHead>dostupnosť</TableHead>
-      <Button size="filter">na objednávku</Button>
-      <Button size="filter">skladom</Button>
-      <Button size="filter">zľava</Button>
+      <Button active={!activeFilter || activeFilter ===  ("všetky")} size="filter" onClick={() => handleSetParams("filter", "všetky")}>všetky</Button>
+      <Button active={activeFilter === "na objednávku"} size="filter" onClick={() => handleSetParams("filter", "na objednávku")}>na objednávku</Button>
+      <Button active={activeFilter === "skladom" } size="filter" onClick={() => handleSetParams("filter", "skladom")}>skladom</Button>
+      {/* <Button size="filter" onClick={() => handleSetParams("filter", "discount")}>zľava</Button> */}
     </TableRow>
   );
 }
