@@ -103,6 +103,21 @@ const variations = {
       background-color: var(--color-red-800);
     }
   `,
+
+  back: css`
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    position: absolute;
+    padding: 0;
+    left: 2rem;
+    right: 2rem;
+    background: var(--color-secondary-50);
+
+    &:hover {
+      background: var(--color-secondary-200);
+    }
+  `
 };
 
 const Button = styled.button`

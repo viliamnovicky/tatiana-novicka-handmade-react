@@ -1,6 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createEditProduct } from "../../services/apiProducts";
-import { useCreateProduct } from "./useCreateProduct";
 import toast from "react-hot-toast";
 
 export function useEditProduct() {

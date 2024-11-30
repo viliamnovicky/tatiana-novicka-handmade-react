@@ -1,16 +1,14 @@
 import styled from "styled-components";
-import { GrDocumentUpdate } from "react-icons/gr";
-import { RiLockPasswordLine } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
-import LogoutButton from "../features/authentication/LogoutButton";
 
 const StyledSidebar = styled.aside`
   width: 35rem;
+  max-height: calc(100vh - 22rem);
   display: flex;
   flex-direction: column;
   border: none;
-  padding-right: 3rem;
-  padding-top: 4.5rem;
+  margin: 0 auto;
+  overflow-y: scroll;
 
   .active {
     background: var(--color-primary-400);

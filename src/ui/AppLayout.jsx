@@ -5,17 +5,19 @@ import Footer from "./Footer";
 
 const Main = styled.main`
   padding: 1rem 3rem;
-  overflow-x: hidden;
   background-color: var(--color-primary-50);
   position: relative;
+  overflow: hidden;
 `;
 
 const StyledAppLayout = styled.div`
   display: grid;
   height: 100vh;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: 12rem auto 8rem;
   border-radius: 1rem;
   overflow: hidden;
+  position: relative;
+
 `;
 
 function AppLayout() {

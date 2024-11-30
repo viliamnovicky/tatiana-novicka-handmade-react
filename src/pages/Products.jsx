@@ -4,7 +4,7 @@ import ProductsSidebar from "../features/products/ProductsSidebar";
 
 const StyledProductsCont = styled.div`
   display: grid;
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns: 35rem auto;
   overflow: hidden;
   height: auto;
 `;

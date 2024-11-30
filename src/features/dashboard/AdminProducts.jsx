@@ -20,6 +20,7 @@ import {
 
 import { FaLongArrowAltDown, FaLongArrowAltUp } from "react-icons/fa";
 import { useSearchParams } from "react-router-dom";
+import ProductsFilter from "../products/ProductsFilter";
 
 const Image = styled.img`
   width: 6rem;
@@ -29,31 +30,43 @@ const Image = styled.img`
 function TableProducts() {
   const { isLoading, products } = useProducts();
   const { isDeleting, deleteProduct } = useDeleteProduct();
+  const [searchParams] = useSearchParams();
+
+  const category = searchParams.get("kategória") || "všetky";
+  const avail = searchParams.get("filter") || "všetky"
 
   if (isLoading) return <Spinner />;
 
+  let filteredProducts;
+  
+  if (category === "všetky") {filteredProducts = products}
+  if (category !== "všetky") {filteredProducts = products.filter((product) => product.categoryName === category)}
+  
+  if(avail === "všetky") {filteredProducts}
+  if (avail !== "všetky") {filteredProducts = filteredProducts.filter((product) => product.availability === avail)}
+
+  
+  // Sort
+  const sortBy = searchParams.get("sort") || "price-asc"
+  const [field, direction] = sortBy.split("-")
+  const modifier = direction === "asc" ? 1 : -1
+  const sortedProducts = filteredProducts.sort((a, b) => {
+    if (typeof a[field] === "number" && typeof b[field] === "number") {
+      // Numeric comparison
+      return (a[field] - b[field]) * modifier;
+    } else if (typeof a[field] === "string" && typeof b[field] === "string") {
+      // String comparison
+      return a[field].localeCompare(b[field]) * modifier;
+    } else {
+      return 0; // Default case if types don't match
+    }
+  });
+
   return (
     <>
-      <Heading font="hand">Spráava produktov</Heading>
+      <Heading font="hand">Správa produktov</Heading>
 
-      <TableRow color="primary" grid="filter">
-        <TableHead>Zoradiť</TableHead>
-        <Button size="medium">
-          cena{" "}
-          <span>
-            <FaLongArrowAltUp />
-          </span>
-        </Button>
-        <Button size="medium">
-          cena
-          <span>
-            <FaLongArrowAltDown />
-          </span>
-        </Button>
-        <TableHead>dostupnosť</TableHead>
-        <Button size="medium">na objednávku</Button>
-        <Button size="medium">skladom</Button>
-      </TableRow>
+      <ProductsFilter/>
 
       <TableRow color="primary" grid="admin">
         <TableHead>fotka</TableHead>
@@ -64,7 +77,7 @@ function TableProducts() {
         <TableHead>akcie</TableHead>
       </TableRow>
       <Table margin="left">
-        {products.map((product) => (
+        {sortedProducts.map((product) => (
           <TableRow key={product.name + product.id} grid="admin">
             <TableColumn>
               <Image src={product.coverImage} />

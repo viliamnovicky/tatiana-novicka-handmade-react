@@ -45,8 +45,8 @@ const heights = {
 
 export const Table = styled.div`
   margin-top: 1rem;
-  height: 48vh;
-  overflow: scroll;
+  max-height: calc(100vh - 36rem);
+  overflow-y: auto;
   padding-left: 1.5rem;
   padding: 1rem;
   ${(props) => margins[props.margin]}

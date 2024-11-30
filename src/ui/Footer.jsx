@@ -6,7 +6,7 @@ import StyledParagraph from "./StyledParagraph";
 import AnchorLinkLogo from "./AnchorLinkLogo";
 
 const StyledFooter = styled.footer`
-  height: 10rem;
+  height: 100%;
   background-color: var(--color-secondary-200);
   display: flex;
   justify-content: space-between;

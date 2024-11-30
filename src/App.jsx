@@ -37,7 +37,7 @@ function App() {
             <Route index element={<Navigate replace to="/domov" />} />
             <Route path="domov" element={<Home />} />
             <Route path="produkty" element={<Products />} />
-            <Route path="produkty/:productId" element={<Product />} />
+            <Route path="produkty/:productName" element={<Product />} />
             <Route path="kontakt" element={<Contact />} />
             <Route path="login" element={<Login />} />
             <Route path="*" element={<PageNotFound />} />

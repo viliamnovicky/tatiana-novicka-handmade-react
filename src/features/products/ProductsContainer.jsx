@@ -9,7 +9,7 @@ import { useSearchParams } from "react-router-dom";
 import { capitalize } from "../../utils/helpers";
 
 const StyledProductsContainer = styled.div`
-  height: 100%;
+  max-height: calc(100vh - 24rem);
 `;
 
 function ProductsContainer() {
@@ -24,7 +24,7 @@ function ProductsContainer() {
     <StyledProductsContainer>
       <Heading font="hand">{headingTitle}</Heading>
       <ProductsFilter />
-      <Table>
+      <Table margin="left">
         <ProductsList />
       </Table>
     </StyledProductsContainer>

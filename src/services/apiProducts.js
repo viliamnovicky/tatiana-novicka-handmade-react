@@ -10,6 +10,20 @@ export async function getProducts() {
   return data;
 }
 
+export async function getProduct(slug) {
+  const { data, error } = await supabase
+    .from("products")
+    .select("*")
+    .eq("slug", slug)
+    .single(); // Ensures only one product is returned
+
+  if (error) {
+    throw new Error("Nepodarilo sa načítať produkt");
+  }
+
+  return data;
+}
+
 export async function getProductsByCategory(category) {
   const { data, error } = await supabase.from("products").select("*").eq("category", category);
 
