@@ -25,7 +25,7 @@ const sizes = {
     font-weight: 800;
 
     &:active {
-      background: var(--color-primary-600)
+      background: var(--color-primary-600);
     }
   `,
 };
@@ -49,12 +49,12 @@ const variations = {
   `,
 
   cart: css`
-    background: var(--color-green-200); 
-    color: var(--color-grey-950); 
+    background: var(--color-green-200);
+    color: var(--color-grey-950);
     font-size: 2rem;
 
     &:hover {
-      background: var(--color-green-800); 
+      background: var(--color-green-800);
     }
   `,
 
@@ -117,7 +117,20 @@ const variations = {
     &:hover {
       background: var(--color-secondary-200);
     }
-  `
+  `,
+  newProduct: css`
+    position: absolute;
+    bottom: 2rem;
+    left: calc(50% + 17.5rem);
+    transform: translateX(-50%);
+
+    color: var(--color-primary-50);
+    background-color: var(--color-primary-300);
+
+    &:hover {
+      background-color: var(--color-primary-700);
+    }
+  `,
 };
 
 const Button = styled.button`
@@ -134,7 +147,6 @@ const Button = styled.button`
     props.active &&
     css`
       background: var(--color-primary-600) !important;
-      
     `}
 
   span {

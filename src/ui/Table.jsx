@@ -38,18 +38,27 @@ const margins = {
 
 const heights = {
   ten: css`
-    height: 10rem;
+    height: 12rem;
   `,
   
 };
 
+const types = {
+  manager: css`
+    max-height: calc(100vh - 50rem);
+    overflow-y: auto;
+  `
+}
+
 export const Table = styled.div`
   margin-top: 1rem;
-  max-height: calc(100vh - 36rem);
-  overflow-y: auto;
+  max-height: calc(100vh - 38rem);
+  overflow-y: scroll;
   padding-left: 1.5rem;
   padding: 1rem;
+  margin-left: 1rem;
   ${(props) => margins[props.margin]}
+  ${(props) => types[props.type]}
 `;
 
 export const TableRow = styled.div`

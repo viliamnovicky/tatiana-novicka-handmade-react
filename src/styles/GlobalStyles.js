@@ -152,7 +152,7 @@ img {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: var(--color-primary-50);
+  background: transparent;
 }
 
 /* Handle */

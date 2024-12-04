@@ -4,6 +4,11 @@ import styled from "styled-components";
 const NavList = styled.ul`
   display: flex;
   gap: 0.8rem;
+
+  @media (max-width: 1365px) {
+    visibility: hidden;
+    width: 0;
+  }
 `;
 
 const StyledNavLink = styled(NavLink)`

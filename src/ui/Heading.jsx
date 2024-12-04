@@ -28,7 +28,7 @@ const Heading = styled.h1`
   line-height: 1.5;
   ${(props) => fonts[props.font]}
   margin: auto;
-  width: 100%;
+  max-width: 100rem;
   text-align: center;
   padding-bottom: 2rem;
 `;

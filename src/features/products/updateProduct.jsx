@@ -1,9 +1,9 @@
 import FormRow, {
   FormError,
   FormGroup,
-  StyledForm,
+  Form,
   StyledFormContImage,
-  StyledFormInput,
+  Input,
   StyledFormLabel,
   StyledFormSelect,
 } from "../../ui/Form";
@@ -54,10 +54,10 @@ function UpdateProduct({ productToEdit = {} }) {
       </Modal.Open>
       <Modal.Window name="update-product-form">
         {/* <HeadingAdmin>Nový produkt</HeadingAdmin> */}
-        <StyledForm onSubmit={handleSubmit(onSubmit, onError)}>
+        <Form onSubmit={handleSubmit(onSubmit, onError)}>
           <FormGroup>
             <FormRow label="Názov produktu" error={errors?.name?.message}>
-              <StyledFormInput
+              <Input
                 autoComplete="new-password"
                 id="name"
                 placeholder="Názov Produktu"
@@ -67,7 +67,7 @@ function UpdateProduct({ productToEdit = {} }) {
               />
             </FormRow>
             <FormRow label="Cena" error={errors?.price?.message}>
-              <StyledFormInput
+              <Input
                 autoComplete="new-password"
                 id="price"
                 placeholder="Cena"
@@ -78,7 +78,7 @@ function UpdateProduct({ productToEdit = {} }) {
               />
             </FormRow>
             <FormRow label="Dostupnosť" error={errors?.price?.message}>
-              <StyledFormInput
+              <Input
                 autoComplete="new-password"
                 id="availability"
                 placeholder="Dostupnosť"
@@ -90,7 +90,7 @@ function UpdateProduct({ productToEdit = {} }) {
           </FormGroup>
           <FormGroup>
             <FormRow type="text" label="Popis produktu" error={errors?.price?.message}>
-              <StyledFormInput
+              <Input
                 rows="10"
                 cols="15"
                 as="textarea"
@@ -123,7 +123,7 @@ function UpdateProduct({ productToEdit = {} }) {
                 Fotografia{" "}
                 {errors?.coverImage?.message && <FormError>{errors.coverImage.message}</FormError>}
               </StyledFormLabel>
-              <StyledFormInput
+              <Input
                 id="coverImage"
                 type="file"
                 accept="image/*"
@@ -133,7 +133,7 @@ function UpdateProduct({ productToEdit = {} }) {
             </StyledFormContImage>
             <Button disabled={isEditing}>upraviť</Button>
           </FormGroup>
-        </StyledForm>
+        </Form>
       </Modal.Window>
     </Modal>
   );

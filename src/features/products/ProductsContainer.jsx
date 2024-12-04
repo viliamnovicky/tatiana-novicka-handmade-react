@@ -24,7 +24,7 @@ function ProductsContainer() {
     <StyledProductsContainer>
       <Heading font="hand">{headingTitle}</Heading>
       <ProductsFilter />
-      <Table margin="left">
+      <Table>
         <ProductsList />
       </Table>
     </StyledProductsContainer>

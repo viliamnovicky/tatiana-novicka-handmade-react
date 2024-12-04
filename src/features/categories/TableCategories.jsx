@@ -39,7 +39,7 @@ function TableProducts() {
         <TableHead>akcie</TableHead>
         
       </TableRow>
-      <Table margin="left">
+      <Table type="manager">
         {categories.map((category) => (
           <TableRow key={category.name + category.id} grid="categories" >
             <TableColumn>

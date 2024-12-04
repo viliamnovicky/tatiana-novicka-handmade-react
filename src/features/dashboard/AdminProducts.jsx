@@ -22,6 +22,10 @@ import { FaLongArrowAltDown, FaLongArrowAltUp } from "react-icons/fa";
 import { useSearchParams } from "react-router-dom";
 import ProductsFilter from "../products/ProductsFilter";
 
+const StyledTableProducts = styled.div`
+  height: 50rem;
+`
+
 const Image = styled.img`
   width: 6rem;
   margin: auto;
@@ -63,7 +67,7 @@ function TableProducts() {
   });
 
   return (
-    <>
+    <StyledTableProducts>
       <Heading font="hand">Správa produktov</Heading>
 
       <ProductsFilter/>
@@ -76,7 +80,7 @@ function TableProducts() {
         <TableHead>dostupnosť</TableHead>
         <TableHead>akcie</TableHead>
       </TableRow>
-      <Table margin="left">
+      <Table type="manager">
         {sortedProducts.map((product) => (
           <TableRow key={product.name + product.id} grid="admin">
             <TableColumn>
@@ -102,7 +106,7 @@ function TableProducts() {
           </TableRow>
         ))}
       </Table>
-    </>
+    </StyledTableProducts>
   );
 }
 

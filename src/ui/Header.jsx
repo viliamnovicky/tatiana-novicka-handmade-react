@@ -13,6 +13,12 @@ const StyledHeader = styled.header`
   position: sticky;
   top: 0;
   z-index: 1000;
+  width: 100vw;
+
+  @media (max-width: 1365px) {
+    justify-content: center;
+    padding: 0;
+  }
 `;
 
 function Header() {

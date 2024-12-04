@@ -13,6 +13,14 @@ const StyledFooter = styled.footer`
   padding: 0 10rem;
   border-radius: 1rem;
   z-index: 10;
+
+  @media (max-width: 1365px) {
+    flex-direction: column;
+    padding: 2rem;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 1.4rem;
+  }
 `;
 
 const FooterBox = styled.div`
@@ -20,6 +28,10 @@ const FooterBox = styled.div`
   justify-content: center;
   align-items: center;
   gap: 5rem;
+
+  @media (max-width: 1365px) {
+    gap: 1rem;
+  }
 `;
 
 function Footer() {

@@ -1,9 +1,9 @@
 import FormRow, {
   FormError,
   FormGroup,
-  StyledForm,
+  Form,
   StyledFormContImage,
-  StyledFormInput,
+  Input,
   StyledFormLabel,
   StyledFormSelect,
 } from "../../ui/Form";
@@ -15,6 +15,7 @@ import { useCreateProduct } from "./useCreateProduct";
 import Spinner from "../../ui/Spinner";
 import Modal from "../../ui/Modal";
 import { useState } from "react";
+import { createSlug } from "../../utils/helpers";
 
 function NewProduct() {
   const { register, handleSubmit, reset, getValues, formState } = useForm();
@@ -28,7 +29,7 @@ function NewProduct() {
   function onSubmit(data) {
 
       createProduct(
-        { ...data, coverImage: data.coverImage[0], discount: 0, categoryName },
+        { ...data, coverImage: data.coverImage[0], discount: 0, categoryName, slug: createSlug(data.name) },
         {
           onSuccess: (data) => {
             reset();
@@ -47,15 +48,14 @@ function NewProduct() {
   return (
     <Modal>
       <Modal.Open opens="new-product-form">
-        <Button>Pridať nový produkt</Button>
+        <Button variation="newProduct">Pridať nový produkt</Button>
       </Modal.Open>
       <Modal.Window name="new-product-form">
         {/* <HeadingAdmin>Nový produkt</HeadingAdmin> */}
-        <StyledForm onSubmit={handleSubmit(onSubmit, onError)}>
+        <Form onSubmit={handleSubmit(onSubmit, onError)}>
           <FormGroup>
             <FormRow label="Názov produktu" error={errors?.name?.message}>
-              <StyledFormInput
-                autoComplete="new-password"
+              <Input
                 id="name"
                 placeholder="Názov Produktu"
                 {...register("name", {
@@ -64,8 +64,7 @@ function NewProduct() {
               />
             </FormRow>
             <FormRow label="Cena" error={errors?.price?.message}>
-              <StyledFormInput
-                autoComplete="new-password"
+              <Input
                 id="price"
                 placeholder="Cena"
                 type="number"
@@ -75,8 +74,7 @@ function NewProduct() {
               />
             </FormRow>
             <FormRow label="Dostupnosť" error={errors?.price?.message}>
-              <StyledFormInput
-                autoComplete="new-password"
+              <Input
                 id="availability"
                 placeholder="Dostupnosť"
                 {...register("availability", {
@@ -87,11 +85,10 @@ function NewProduct() {
           </FormGroup>
           <FormGroup>
             <FormRow type="text" label="Popis produktu" error={errors?.price?.message}>
-              <StyledFormInput
+              <Input
                 rows="10"
                 cols="15"
                 as="textarea"
-                autoComplete="new-password"
                 id="description"
                 placeholder="Popis produktu"
                 {...register("description", {
@@ -121,7 +118,7 @@ function NewProduct() {
                 Fotografia{" "}
                 {errors?.coverImage?.message && <FormError>{errors.coverImage.message}</FormError>}
               </StyledFormLabel>
-              <StyledFormInput
+              <Input
                 id="coverImage"
                 type="file"
                 accept="image/*"
@@ -133,7 +130,7 @@ function NewProduct() {
             </StyledFormContImage>
             <Button disabled={isCreating}>pridať</Button>
           </FormGroup>
-        </StyledForm>
+        </Form>
       </Modal.Window>
     </Modal>
   );

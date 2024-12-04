@@ -10,6 +10,12 @@ const AnchorLinkLogo = styled.a`
   border-radius: 50%;
   cursor: pointer;
 
+  @media (max-width: 1365px) {
+    font-size: 2rem;
+    width: 3rem;
+    height: 3rem;
+  }
+
   ${(props) =>
     props.color === "primary" &&
     css`
@@ -32,7 +38,7 @@ const AnchorLinkLogo = styled.a`
 `;
 
 AnchorLinkLogo.defaultProps = {
-    color: "primary"
-}
+  color: "primary",
+};
 
 export default AnchorLinkLogo;
