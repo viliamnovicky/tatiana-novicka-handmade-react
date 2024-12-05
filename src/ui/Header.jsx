@@ -14,6 +14,7 @@ const StyledHeader = styled.header`
   top: 0;
   z-index: 1000;
   width: 100vw;
+  position: relative;
 
   @media (max-width: 1365px) {
     justify-content: center;

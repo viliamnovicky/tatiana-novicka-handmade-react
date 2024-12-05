@@ -143,6 +143,12 @@ img {
   max-width: 100%;
 }
 
+.navbar-visible-phone {
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 100vw;
+}
+
 /* SCROLLBAR*/
 
 /* width */
@@ -164,6 +170,11 @@ img {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-primary-500);
-}`;
+}
 
+@keyframes rotate-hamburger {
+  from {transform: rotate(-45deg)}
+  to {transform: rotate(0deg)}
+}
+`;
 export default GlobalStyles;

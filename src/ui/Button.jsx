@@ -131,6 +131,26 @@ const variations = {
       background-color: var(--color-primary-700);
     }
   `,
+  hamburger: css`
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+    padding: 0;
+    background: var(--color-primary-100);
+    color: var(--color-primary-950);
+    position: absolute;
+    right: 1rem;
+    bottom: -5rem;
+    z-index: 15;
+    visibility: hidden;
+    * {
+      transform-origin: center;
+      animation: rotate-hamburger 0.2s forwards;
+    }
+    @media (max-width: 1365px) {
+      visibility: visible;
+    }
+  `,
 };
 
 const Button = styled.button`

@@ -4,6 +4,7 @@ import HomeContainer from "../ui/HomeContainer";
 const StyledHome = styled.div`
   display: flex;
   flex-direction: column;
+  height: calc(100vh -24rem);
 `;
 
 function Home() {
