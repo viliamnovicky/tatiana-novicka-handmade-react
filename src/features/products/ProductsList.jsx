@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Buttons, TableColumn, TableName, TablePrice, TableRow } from "../../ui/Table";
+import { Buttons, TableAvailability, TableColumn, TableName, TablePrice, TableRow } from "../../ui/Table";
 import { useProducts } from "./useProducts";
 import Button from "../../ui/Button";
 import { MdAddShoppingCart } from "react-icons/md";
@@ -8,8 +8,13 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 
 const Image = styled.img`
   border-radius: 2rem;
-  width: 30rem;
-  filter: blur(0rem) brightness(1);
+
+  @media (max-width: 1365px) {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    width: calc(100% - 4rem);
+  }
 `;
 
 function ProductsList() {
@@ -17,7 +22,7 @@ function ProductsList() {
   const category = searchParams.get("kategória") || "všetky";
   const avail = searchParams.get("filter") || "všetky";
   const { products, isLoading } = useProducts();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   if (isLoading) return <Spinner />;
 
@@ -64,9 +69,16 @@ function ProductsList() {
           {/* <TableDiscount key={product.discount}>
               <span>{product.discount} €</span>
             </TableDiscount> */}
-          <TableColumn key={product.availability}>{product.availability}</TableColumn>
+          <TableAvailability key={product.availability}>{product.availability}</TableAvailability>
           <Buttons>
-            <Button id={product.id} size="medium" key={product.name + "details"} onClick={() => navigate(`${product.slug}?kategória=${category}`)}>Detaily</Button>
+            <Button
+              id={product.id}
+              size="medium"
+              key={product.name + "details"}
+              onClick={() => navigate(`${product.slug}?kategória=${category}`)}
+            >
+              Detaily
+            </Button>
             <Button variation="cart" key={product.name + "cart"}>
               <MdAddShoppingCart />
             </Button>

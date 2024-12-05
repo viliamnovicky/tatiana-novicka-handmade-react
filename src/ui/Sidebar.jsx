@@ -10,6 +10,13 @@ const StyledSidebar = styled.aside`
   margin: 0 auto;
   overflow-y: scroll;
 
+  @media (max-width: 1365px) {
+    opacity: 0;
+    visibility: hidden; 
+    position: absolute;
+    width: 0;
+  }
+
   .active {
     background: var(--color-primary-400);
     border-radius: 1rem;

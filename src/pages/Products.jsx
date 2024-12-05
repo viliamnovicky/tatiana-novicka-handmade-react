@@ -6,7 +6,11 @@ const StyledProductsCont = styled.div`
   display: grid;
   grid-template-columns: 35rem auto;
   overflow: hidden;
-  height: auto;
+  margin: auto;
+
+  @media (max-width: 1365px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 function Products() {

@@ -14,9 +14,7 @@ function ManageProducts() {
   return (
     <StyledManageProducts>
       <TableCategories />
-      <Buttons>
         <NewCategory />
-      </Buttons>
     </StyledManageProducts>
   );
 }

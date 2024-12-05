@@ -42,7 +42,7 @@ function NewCategory() {
   return (
     <Modal>
       <Modal.Open opens="new-category-form">
-        <Button className="add_button">Pridať novú kategóriu</Button>
+        <Button variation="newCategory">Pridať novú kategóriu</Button>
       </Modal.Open>
       <Modal.Window name="new-category-form">
         <Form onSubmit={handleSubmit(onSubmit, onError)}>

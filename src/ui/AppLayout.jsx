@@ -8,6 +8,10 @@ const Main = styled.main`
   background-color: var(--color-primary-50);
   position: relative;
   overflow-x: auto;
+
+  @media (max-width: 1365px) {
+    padding: 0rem;
+  }
 `;
 
 const StyledAppLayout = styled.div`

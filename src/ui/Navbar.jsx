@@ -59,16 +59,16 @@ function Navbar() {
     </Button>
       <NavList className={isVisibleNavbar ? "navbar-visible-phone" : ""}>
         <li>
-          <StyledNavLink to="domov">O mne</StyledNavLink>
+          <StyledNavLink to="domov" onClick={() => setIsvisibleNavbar(false)}>O mne</StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to="produkty">Produkty</StyledNavLink>
+          <StyledNavLink to="produkty" onClick={() => setIsvisibleNavbar(false)}>Produkty</StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to="kontakt">Kontakt</StyledNavLink>
+          <StyledNavLink to="kontakt" onClick={() => setIsvisibleNavbar(false)}>Kontakt</StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to="admin/sprava-produktov">admin</StyledNavLink>
+          <StyledNavLink to="admin/sprava-produktov" onClick={() => setIsvisibleNavbar(false)}>admin</StyledNavLink>
         </li>
       </NavList>
     </>

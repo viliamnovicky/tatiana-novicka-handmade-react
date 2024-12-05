@@ -131,6 +131,19 @@ const variations = {
       background-color: var(--color-primary-700);
     }
   `,
+  newCategory: css`
+    position: absolute;
+    bottom: 0rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    color: var(--color-primary-50);
+    background-color: var(--color-primary-300);
+
+    &:hover {
+      background-color: var(--color-primary-700);
+    }
+  `,
   hamburger: css`
     border-radius: 50%;
     width: 4rem;
@@ -139,7 +152,7 @@ const variations = {
     background: var(--color-primary-100);
     color: var(--color-primary-950);
     position: absolute;
-    right: 1rem;
+    right: 2rem;
     bottom: -5rem;
     z-index: 15;
     visibility: hidden;
