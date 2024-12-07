@@ -32,6 +32,17 @@ const grids = {
     display: flex;
     align-items: center;
     justify-content: space-evenly !important;
+
+    @media (max-width: 750px) {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      & div:first-child {
+        grid-column: 1 / 5;
+      };
+      & div:last-child {
+        grid-column: 7 / 30;
+      }
+    }
   `,
 };
 const margins = {
@@ -56,8 +67,6 @@ export const Table = styled.div`
   margin-top: 1rem;
   max-height: calc(100vh - 38rem);
   overflow-y: scroll;
-  padding-left: 1.5rem;
-  padding: 1rem;
   margin-left: 1.5rem;
   ${(props) => margins[props.margin]}
   ${(props) => types[props.type]}
@@ -73,7 +82,7 @@ export const TableRow = styled.div`
   position: relative;
   display: grid;
   align-items: center;
-  max-width: 100rem;
+  max-width: calc(100vw - 45rem);
   margin: auto;
   margin-bottom: 1rem;
   padding: 1rem;
@@ -84,7 +93,7 @@ export const TableRow = styled.div`
   ${(props) => heights[props.height]}
 
   @media (max-width: 1365px) {
-    width: 90vw;
+    max-width: 98vw;
   }
 `;
 
@@ -116,7 +125,7 @@ export const TableAvailability = styled.div`
     border-right: none;
     height: auto;
     background: var(--color-secondary-100);
-    padding: .2rem .8rem;
+    padding: 0.2rem 0.8rem;
     border-radius: 50rem;
     font-size: 1.2rem;
     color: var(--color-secondary-950);
