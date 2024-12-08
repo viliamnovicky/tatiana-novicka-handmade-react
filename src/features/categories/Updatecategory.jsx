@@ -1,20 +1,12 @@
-import {
-  FormError,
-  FormGroup,
-
-  Error,
-  Form,
-  Input,
-  Label,
-} from "../../ui/Form";
+import { FormError, FormGroup, Error, Form, Input, Label } from "../../ui/Form";
 import Button from "../../ui/Button";
 
 import { useForm } from "react-hook-form";
 import Modal from "../../ui/Modal";
 import Heading from "../../ui/Heading";
 
-function UpdateProduct({ productToEdit = {} }) {
-  const { id: editId, ...editValues } = productToEdit;
+function UpdateCategory({ categoryToEdit = {} }) {
+  const { id: editId, ...editValues } = categoryToEdit;
   const isEditSession = Boolean(editId);
 
   const { register, handleSubmit, reset, getValues, formState } = useForm({
@@ -52,12 +44,13 @@ function UpdateProduct({ productToEdit = {} }) {
       </Modal.Open>
       <Modal.Window name="new-category-form">
         <Form>
-        <Heading font="hand">Upraviť kategóriu</Heading>
+          <Heading font="hand">Upraviť kategóriu</Heading>
           <FormGroup>
-            <Label>Názov kategórie
-            <Error>{errors?.name?.message}</Error>
+            <Label>
+              Názov kategórie
+              <Error>{errors?.name?.message}</Error>
             </Label>
-            
+
             <Input
               autoComplete="name"
               id="name"
@@ -66,24 +59,24 @@ function UpdateProduct({ productToEdit = {} }) {
                 required: "Toto pole je povinné",
               })}
             />
-            </FormGroup>
-            <FormGroup>
-              <Label for="coverImage">
-                Fotografia{" "}
-                {errors?.coverImage?.message && <FormError>{errors.coverImage.message}</FormError>}
-              </Label>
-              <Input
-                id="coverImage"
-                type="file"
-                accept="image/*"
-                placeholder="Fotografia"
-                {...register("coverImage", {
-                  required: "Toto pole je povinné",
-                })}
-              />
-            </FormGroup>
-            <FormGroup>
-            <Button >pridať</Button>
+          </FormGroup>
+          <FormGroup>
+            <Label for="coverImage">
+              Fotografia{" "}
+              {errors?.coverImage?.message && <FormError>{errors.coverImage.message}</FormError>}
+            </Label>
+            <Input
+              id="coverImage"
+              type="file"
+              accept="image/*"
+              placeholder="Fotografia"
+              {...register("coverImage", {
+                required: "Toto pole je povinné",
+              })}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Button>pridať</Button>
           </FormGroup>
         </Form>
       </Modal.Window>
@@ -91,4 +84,4 @@ function UpdateProduct({ productToEdit = {} }) {
   );
 }
 
-export default UpdateProduct;
+export default UpdateCategory;

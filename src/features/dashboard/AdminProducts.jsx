@@ -5,8 +5,6 @@ import Heading from "../../ui/Heading";
 
 import { useProducts } from "../products/useProducts";
 import { useDeleteProduct } from "../products/useDeleteProduct";
-import UpdateProduct from "../products/UpdateProduct.jsx";
-
 import {
   Buttons,
   Table,
@@ -20,6 +18,7 @@ import {
 
 import { useSearchParams } from "react-router-dom";
 import ProductsFilter from "../products/ProductsFilter";
+import UpdateProduct from "../products/UpdateProduct";
 
 const StyledTableProducts = styled.div`
   height: 50rem;
