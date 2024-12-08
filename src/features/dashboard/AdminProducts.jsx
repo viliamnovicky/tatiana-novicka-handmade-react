@@ -18,7 +18,7 @@ import {
 
 import { useSearchParams } from "react-router-dom";
 import ProductsFilter from "../products/ProductsFilter";
-import UpdateProduct from "../products/UpdateProduct";
+// import UpdateProduct from "../products/UpdateProduct";
 
 const StyledTableProducts = styled.div`
   height: 50rem;
@@ -91,7 +91,7 @@ function TableProducts() {
             </TableDiscount>
             <TableColumn key={product.availability}>{product.availability}</TableColumn>
             <Buttons>
-              <UpdateProduct productToEdit={product} />
+              {/* <UpdateProduct productToEdit={product} /> */}
               <Button
                 variation="secondary"
                 size="small"
