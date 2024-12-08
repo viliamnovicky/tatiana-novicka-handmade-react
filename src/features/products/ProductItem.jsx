@@ -4,6 +4,7 @@ import Button from "../../ui/Button";
 import { MdAddShoppingCart } from "react-icons/md";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { TagColors } from "../../styles/Colors";
+import ProductItemActions from "./ProductItemActions";
 
 const StyledProductItem = styled.div`
   padding: 1rem;
@@ -38,9 +39,7 @@ const Tag = styled.p`
 `
 
 function ProductItem({ product }) {
-  const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
-  const category = searchParams.get("kategória") || "všetky";
+  
   return (
     <StyledProductItem>
         <Tag color={product.availability === "skladom" ? "green" : "red"}>{product.availability}</Tag>
@@ -49,19 +48,7 @@ function ProductItem({ product }) {
         <p>{product.name}</p>
         <p>{product.price}€</p>
       </Description>
-      <Buttons>
-        <Button
-          id={product.id}
-          size="medium"
-          key={product.name + "details"}
-          onClick={() => navigate(`${product.slug}?kategória=${category}`)}
-        >
-          Detaily
-        </Button>
-        <Button variation="cart" key={product.name + "cart"}>
-          <MdAddShoppingCart />
-        </Button>
-      </Buttons>
+      <ProductItemActions product={product}/>
     </StyledProductItem>
   );
 }

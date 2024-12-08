@@ -14,17 +14,17 @@ const GlobalStyles = createGlobalStyle`
   --color-primary-900: #164e63;
   --color-primary-950: #083344;
 
-  --color-secondary-50: #fef2f2;
-  --color-secondary-100: #fee2e2;
-  --color-secondary-200: #fecaca;
-  --color-secondary-300: #fca5a5;
-  --color-secondary-400: #f87171;
-  --color-secondary-500: #ef4444;
-  --color-secondary-600: #dc2626;
-  --color-secondary-700: #b91c1c;
-  --color-secondary-800: #991b1b;
-  --color-secondary-900: #7f1d1d;
-  --color-secondary-950: #450a0a;
+  --color-secondary-50: #f0fdfa;
+  --color-secondary-100: #ccfbf1;
+  --color-secondary-200: #99f6e4;
+  --color-secondary-300: #5eead4;
+  --color-secondary-400: #2dd4bf;
+  --color-secondary-500: #14b8a6;
+  --color-secondary-600: #0d9488;
+  --color-secondary-700: #0f766e;
+  --color-secondary-800: #115e59;
+  --color-secondary-900: #134e4a;
+  --color-secondary-950: #042f2e;
 
   --color-grey-50: #fafaf9;
   --color-grey-100: #f5f5f4;
@@ -52,6 +52,9 @@ const GlobalStyles = createGlobalStyle`
 --color-success: #34d399;
 --color-danger: #fb923c;
 --color-error: #f87171;
+
+--gradient-200: linear-gradient(135deg, var(--color-secondary-200), var(--color-primary-200));
+--gradient-400: linear-gradient(165deg, var(--color-primary-400), var(--color-secondary-400));
 
   --backdrop-color: rgba(103, 232, 249, .1);
 

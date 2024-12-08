@@ -10,10 +10,9 @@ const StyledModal = styled.div`
   transform: translate(-50%, -50%);
   background-color: var(--color-white);
   border-radius: 2rem;
-  padding: 3.2rem 4rem;
   transition: all 0.5s;
   width: auto;
-  max-height: 90vh;
+  max-height: 70vh;
   overflow-y: auto;
 `;
 

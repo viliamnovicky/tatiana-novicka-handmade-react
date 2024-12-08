@@ -3,7 +3,7 @@ import Logo from "./Logo";
 import Navbar from "./Navbar";
 
 const StyledHeader = styled.header`
-  background-color: var(--color-primary-300);
+  background: var(--gradient-400);
   padding: 1.2rem 4.8rem;
   display: flex;
   justify-content: space-between;

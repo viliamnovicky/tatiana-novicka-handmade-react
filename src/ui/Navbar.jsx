@@ -40,13 +40,13 @@ const StyledNavLink = styled(NavLink)`
   }
 
   &:hover {
-    border-bottom: 3px solid var(--color-secondary-200);
+    border-bottom: 3px solid var(--color-secondary-100);
   }
 
   &:active,
   &.active:link,
   &.active:visited {
-    border-bottom: 3px solid var(--color-secondary-300);
+    border-bottom: 3px solid var(--color-secondary-200);
   }
 `;
 

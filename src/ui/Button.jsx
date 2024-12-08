@@ -6,17 +6,14 @@ const sizes = {
     width: 10rem;
     height: 3rem;
     text-transform: uppercase;
-    font-weight: 600;
   `,
   medium: css`
     font-size: 1.4rem;
-    width: 12rem;
-    height: 4rem;
+    padding: .7rem 2rem;
   `,
   large: css`
     font-size: 1.6rem;
     padding: 1.2rem 2.4rem;
-    font-weight: 500;
     width: auto;
   `,
   filter: css`
@@ -62,7 +59,7 @@ const variations = {
   `,
   secondary: css`
     color: var(--color-secondary-600);
-    background: var(--color-secondary-100);
+    background: var(--color-secondary-50);
 
     &:hover {
       background-color: var(--color-secondary-200);
@@ -122,6 +119,20 @@ const variations = {
 
     &:hover {
       background-color: var(--color-red-800);
+    }
+  `,
+
+  disabled: css`
+    color: var(--color-grey-950);
+    background-color: var(--color-grey-200);
+    cursor: not-allowed;
+
+    svg {
+      font-size: 2rem;
+    }
+
+    &:hover {
+      background-color: var(--color-grey-300);
     }
   `,
 
@@ -196,6 +207,7 @@ const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: 600;
 
   ${(props) =>
     props.active &&

@@ -7,7 +7,7 @@ import AnchorLinkLogo from "./AnchorLinkLogo";
 
 const StyledFooter = styled.footer`
   height: 100%;
-  background-color: var(--color-secondary-200);
+  background: var(--gradient-200);
   display: flex;
   justify-content: space-between;
   padding: 0 10rem;
