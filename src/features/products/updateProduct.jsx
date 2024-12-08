@@ -19,7 +19,7 @@ function UpdateProduct({ productToEdit = {} }) {
   const { id: editId, ...editValues } = productToEdit;
   const isEditSession = Boolean(editId);
 
-  const { register, handleSubmit, reset, getValues, formState } = useForm({
+  const { register, handleSubmit, reset, formState } = useForm({
     defaultValues: isEditSession ? editValues : {},
   });
   const { errors } = formState;
@@ -33,7 +33,7 @@ function UpdateProduct({ productToEdit = {} }) {
     editProduct(
       { newProductData: { ...data, coverImage }, id: editId },
       {
-        onSuccess: (data) => {
+        onSuccess: () => {
           reset();
           // onCloseModal?.();
         },

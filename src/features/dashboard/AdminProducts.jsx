@@ -18,7 +18,6 @@ import {
   TableRow,
 } from "../../ui/Table";
 
-import { FaLongArrowAltDown, FaLongArrowAltUp } from "react-icons/fa";
 import { useSearchParams } from "react-router-dom";
 import ProductsFilter from "../products/ProductsFilter";
 
