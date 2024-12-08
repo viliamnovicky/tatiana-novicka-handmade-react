@@ -18,11 +18,11 @@ import {
 
 import { useSearchParams } from "react-router-dom";
 import ProductsFilter from "../products/ProductsFilter";
-import UpdateProduct from "../products/UpdateProduct";
+import UpdateProduct from "../products/UpdateProductNew";
 
 const StyledTableProducts = styled.div`
   height: 50rem;
-`
+`;
 
 const Image = styled.img`
   width: 6rem;
@@ -35,23 +35,30 @@ function TableProducts() {
   const [searchParams] = useSearchParams();
 
   const category = searchParams.get("kategória") || "všetky";
-  const avail = searchParams.get("filter") || "všetky"
+  const avail = searchParams.get("filter") || "všetky";
 
   if (isLoading) return <Spinner />;
 
   let filteredProducts;
-  
-  if (category === "všetky") {filteredProducts = products}
-  if (category !== "všetky") {filteredProducts = products.filter((product) => product.categoryName === category)}
-  
-  if(avail === "všetky") {filteredProducts}
-  if (avail !== "všetky") {filteredProducts = filteredProducts.filter((product) => product.availability === avail)}
 
-  
+  if (category === "všetky") {
+    filteredProducts = products;
+  }
+  if (category !== "všetky") {
+    filteredProducts = products.filter((product) => product.categoryName === category);
+  }
+
+  if (avail === "všetky") {
+    filteredProducts;
+  }
+  if (avail !== "všetky") {
+    filteredProducts = filteredProducts.filter((product) => product.availability === avail);
+  }
+
   // Sort
-  const sortBy = searchParams.get("sort") || "price-asc"
-  const [field, direction] = sortBy.split("-")
-  const modifier = direction === "asc" ? 1 : -1
+  const sortBy = searchParams.get("sort") || "price-asc";
+  const [field, direction] = sortBy.split("-");
+  const modifier = direction === "asc" ? 1 : -1;
   const sortedProducts = filteredProducts.sort((a, b) => {
     if (typeof a[field] === "number" && typeof b[field] === "number") {
       // Numeric comparison
@@ -68,7 +75,7 @@ function TableProducts() {
     <StyledTableProducts>
       <Heading font="hand">Správa produktov</Heading>
 
-      <ProductsFilter/>
+      <ProductsFilter />
 
       <TableRow color="primary" grid="admin">
         <TableHead>fotka</TableHead>
