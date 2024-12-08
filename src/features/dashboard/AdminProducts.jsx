@@ -5,7 +5,7 @@ import Heading from "../../ui/Heading";
 
 import { useProducts } from "../products/useProducts";
 import { useDeleteProduct } from "../products/useDeleteProduct";
-import UpdateProduct from "../products/UpdateProduct";
+import UpdateProduct from "../products/UpdateProduct.jsx";
 
 import {
   Buttons,
