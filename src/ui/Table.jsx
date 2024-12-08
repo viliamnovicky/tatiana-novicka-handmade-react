@@ -24,25 +24,10 @@ const grids = {
   `,
   admin: css`
     grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr 2fr;
+    margin-top: 1rem;
   `,
   categories: css`
     grid-template-columns: 1fr 1fr 1fr;
-  `,
-  filter: css`
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly !important;
-
-    @media (max-width: 750px) {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      & div:first-child {
-        grid-column: 1 / 5;
-      };
-      & div:last-child {
-        grid-column: 7 / 30;
-      }
-    }
   `,
 };
 const margins = {
@@ -65,7 +50,7 @@ const types = {
 
 export const Table = styled.div`
   margin-top: 1rem;
-  max-height: calc(100vh - 38rem);
+  max-height: calc(100vh - 39rem);
   overflow-y: scroll;
   margin-left: 1.5rem;
   ${(props) => margins[props.margin]}
@@ -104,12 +89,6 @@ export const TableColumn = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
-  @media (max-width: 1365px) {
-    width: 90vw;
-    border-right: none;
-    height: 35rem;
-  }
 `;
 export const TableAvailability = styled.div`
   text-align: center;
@@ -118,21 +97,6 @@ export const TableAvailability = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
-  @media (max-width: 1365px) {
-    position: absolute;
-    width: auto;
-    border-right: none;
-    height: auto;
-    background: var(--color-secondary-100);
-    padding: 0.2rem 0.8rem;
-    border-radius: 50rem;
-    font-size: 1.2rem;
-    color: var(--color-secondary-950);
-    top: 3rem;
-    right: 3rem;
-    height: auto;
-  }
 `;
 
 export const TableHead = styled.div`
@@ -150,15 +114,6 @@ export const TableName = styled.div`
   display: flex;
   align-items: center;
   border-right: 1px solid var(--color-grey-300);
-
-  @media (max-width: 1365px) {
-    position: absolute;
-    bottom: 8rem;
-    left: 0rem;
-    width: 50%;
-    text-align: center;
-    border-right: none;
-  }
 `;
 
 export const TablePrice = styled.div`
@@ -169,16 +124,6 @@ export const TablePrice = styled.div`
   align-items: center;
   justify-content: center;
   border-right: 1px solid var(--color-grey-300);
-
-  @media (max-width: 1365px) {
-    position: absolute;
-    justify-content: flex-end;
-    padding-right: 2rem;
-    border: none;
-    bottom: 8rem;
-    right: 0rem;
-    width: 50%;
-  }
 `;
 
 export const TableDiscount = styled.div`

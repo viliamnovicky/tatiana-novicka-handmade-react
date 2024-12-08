@@ -21,12 +21,33 @@ const sizes = {
   `,
   filter: css`
     font-size: 1.2rem;
-    padding: 1rem 1rem;
+    padding: .8rem 1rem;
     font-weight: 800;
+
+    & span {
+      font-size: 1.4rem;
+    }
 
     &:active {
       background: var(--color-primary-600);
     }
+
+    @media (max-width: 600px) {
+      font-size: 1rem;
+    padding: .5rem .8rem;
+
+    & span {
+      font-size: 1.2rem;
+    }
+    }
+
+    @media (max-width: 360px) {
+    font-size: .8rem;
+
+    & span {
+      font-size: 1rem;
+    }
+  }
   `,
 };
 

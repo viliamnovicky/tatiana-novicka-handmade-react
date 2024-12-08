@@ -3,6 +3,7 @@ import { Buttons } from "../../ui/Table";
 import Button from "../../ui/Button";
 import { MdAddShoppingCart } from "react-icons/md";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { TagColors } from "../../styles/Colors";
 
 const StyledProductItem = styled.div`
   padding: 1rem;
@@ -31,10 +32,9 @@ const Tag = styled.p`
     padding: .3rem .8rem;
     right: 2rem;
     top: 2rem;
-    background: var(--color-secondary-400);
-    color: var(--color-secondary-50);
     border-radius: 50rem;
     font-size: 1.2rem;
+    ${(props) => TagColors[props.color]}
 `
 
 function ProductItem({ product }) {
@@ -43,7 +43,7 @@ function ProductItem({ product }) {
   const category = searchParams.get("kategória") || "všetky";
   return (
     <StyledProductItem>
-        <Tag>{product.availability}</Tag>
+        <Tag color={product.availability === "skladom" ? "green" : "red"}>{product.availability}</Tag>
       <Image src={product.coverImage} alt={product.name} />
       <Description>
         <p>{product.name}</p>

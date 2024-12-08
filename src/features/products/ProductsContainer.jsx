@@ -22,7 +22,7 @@ function ProductsContainer() {
 
   return (
     <StyledProductsContainer>
-      <Heading font="hand">{headingTitle}</Heading>
+      <Heading as="h1" font="hand">{headingTitle}</Heading>
       <ProductsFilter />
       <Table>
         <ProductsList />

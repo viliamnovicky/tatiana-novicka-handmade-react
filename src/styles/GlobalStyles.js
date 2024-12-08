@@ -49,6 +49,10 @@ const GlobalStyles = createGlobalStyle`
 --color-green-800: #beebc6;
 --color-green-950: #b9e6c2;
 
+--color-success: #34d399;
+--color-danger: #fb923c;
+--color-error: #f87171;
+
   --backdrop-color: rgba(103, 232, 249, .1);
 
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
