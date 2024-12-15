@@ -8,19 +8,43 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import styled from "styled-components";
 
-function Carousel({children}) {
+const StyledCarousel = styled.div`
+  height: 10rem;
+  width: 100%;
+`;
+
+const CarouselImage = styled.img`
+height: 100%;
+border-radius: 1rem;
+`
+
+function Carousel({ product }) {
   return (
-    <Swiper
-      style={{ width: "100rem" }}
-      modules={[Navigation, Pagination, Scrollbar, A11y]}
-      spaceBetween={50}
-      slidesPerView={1}
-      navigation={{ clickable: true }}
-      pagination={{ clickable: true }}
-    >
-   {children}
-    </Swiper>
+    <StyledCarousel>
+      <Swiper
+        style={{ height: "100%", width: "45rem" }}
+        modules={[Navigation, Pagination, Scrollbar, A11y]}
+        spaceBetween={10}
+        slidesPerView={3}
+        navigation={{ clickable: true }}
+        pagination={{ clickable: true }}
+      >
+        <SwiperSlide style={{ height: "100%" }}>
+          <CarouselImage src={product.coverImage} ></CarouselImage>
+        </SwiperSlide>
+        <SwiperSlide>
+          <CarouselImage src={product.coverImage} ></CarouselImage>
+        </SwiperSlide>
+        <SwiperSlide>
+          <CarouselImage src={product.coverImage} ></CarouselImage>
+        </SwiperSlide>
+        <SwiperSlide>
+          <CarouselImage src={product.coverImage} ></CarouselImage>
+        </SwiperSlide>
+      </Swiper>
+    </StyledCarousel>
   );
 }
 

@@ -69,7 +69,10 @@ const variations = {
   cart: css`
     background: var(--color-green-200);
     color: var(--color-grey-950);
-    font-size: 2rem;
+
+    svg {
+      font-size: 2rem;
+    }
 
     &:hover {
       background: var(--color-green-800);
@@ -142,8 +145,7 @@ const variations = {
     border-radius: 50%;
     position: absolute;
     padding: 0;
-    left: 2rem;
-    right: 2rem;
+    left: 0rem;
     background: var(--color-secondary-50);
 
     &:hover {

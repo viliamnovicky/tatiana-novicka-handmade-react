@@ -6,6 +6,13 @@ const fonts = {
   `,
 };
 
+const types = {
+  name: css`
+    width: 100%;
+    padding-bottom: 0rem !important;;
+  `
+}
+
 const Heading = styled.h1`
   ${(props) =>
     props.as === "h1" &&
@@ -14,7 +21,7 @@ const Heading = styled.h1`
       font-weight: 600;
       
       @media (max-width: 600px) {
-        font-size: 2%.5;
+        font-size: 2.5rem;
       }
     `}
   ${(props) =>
@@ -31,6 +38,7 @@ const Heading = styled.h1`
     `}
   line-height: 1.5;
   ${(props) => fonts[props.font]}
+  ${(props) => types[props.type]}
   margin: auto;
   max-width: 100rem;
   text-align: center;

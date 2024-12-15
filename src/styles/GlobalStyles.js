@@ -55,6 +55,7 @@ const GlobalStyles = createGlobalStyle`
 
 --gradient-200: linear-gradient(135deg, var(--color-secondary-200), var(--color-primary-200));
 --gradient-400: linear-gradient(165deg, var(--color-primary-400), var(--color-secondary-400));
+--gradient-400-fade: linear-gradient(90deg, transparent, var(--color-primary-400), var(--color-secondary-400), transparent);
 
   --backdrop-color: rgba(103, 232, 249, .1);
 
